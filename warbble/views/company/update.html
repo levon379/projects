@@ -1,0 +1,101 @@
+<h1>Update Company</h1>
+
+<div ng-show="loading">Loading...</div>
+
+<div class="col-xs-12" ng-show="company.errors.length">
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p ng-repeat="error in company.errors">{{error}}</p>
+    </div>
+</div>
+
+<form name="updateCompanyForm" method="post" ng-submit="update()">
+    <div class="form-group">
+        <div class="col-xs-4">
+            <label>Name</label>
+        </div>
+
+        <div class="col-xs-8">
+            <input type="text" name="name" placeholder="Company name" id="Company_name" class="form-control" ng-model="company.updateData.model.name">
+        </div>
+    </div>
+
+    <div class="form-group clearfix" ng-if="company.updateData.role == 'superadmin'">
+        <div class="col-xs-4">
+            <label>Parent Company</label>
+        </div>
+        <div class="col-xs-8">
+            <select
+                chosen
+                allow-single-deselect="true"
+                data-placeholder="Choose Parent Company"
+                no-results-text="'No companies found'"
+                ng-model="company.updateData.model.parent_id"
+                class="form-control"
+                ng-options="item.id as item.name for item in company.updateData.companies">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-4">
+            <label>Description</label>
+        </div>
+
+        <div class="col-xs-8">
+            <textarea name="description" placeholder="Company description" id="Company_description" class="form-control" ng-model="company.updateData.model.description"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-4">
+            <label>Admin</label>
+        </div>
+        <div class="col-xs-8">
+            <select
+                    chosen
+                    allow-single-deselect="true"
+                    data-placeholder="Choose Admin"
+                    no-results-text="'No users found'"
+                    ng-model="company.updateData.model.users.admin"
+                    class="form-control"
+                    ng-options="item.user_id as (item.first_name + ' ' + item.last_name + ' <' + item.email + '>') for item in company.updateData.users">
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-4">
+            <label>Users</label>
+        </div>
+        <div class="col-xs-8">
+            <select
+                    chosen
+                    multiple
+                    max-selection="3"
+                    allow-single-deselect="true"
+                    data-placeholder="Choose Users"
+                    no-results-text="'No users found'"
+                    ng-model="company.updateData.model.users.employees"
+                    class="form-control"
+                    ng-options="item.user_id as (item.first_name + ' ' + item.last_name + ' <' + item.email + '>') for item in company.updateData.users">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-4">
+            <label>Site</label>
+        </div>
+
+        <div class="col-xs-8">
+            <input type="text" placeholder="Company site" name="site" id="Company_site" class="form-control" ng-model="company.updateData.model.site">
+        </div>
+    </div>
+
+    <div class="col-xs-4"></div>
+    <div class="col-xs-8">
+        <input type="submit" value="Update" class="btn btn-success">
+    </div>
+
+</form>

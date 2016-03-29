@@ -1,0 +1,7 @@
+<nav class="pull-right">
+    <ul class="pagination">
+        <li ng-click="prev()" ng-class="{disabled: current == 1}"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+        <li ng-click="setCurrent(page)" ng-class="{active: page==current}" ng-repeat="page in pageNumbers()"><a href="#">{{page}}</a></li>
+        <li ng-click="next()" ng-class="{disabled: current == pages}"><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+    </ul>
+</nav>

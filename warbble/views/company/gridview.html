@@ -1,0 +1,28 @@
+<div class="panel panel-gridview panel-default">
+    <div ng-show="loading" class="background-overlay"></div>
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <strong>{{tableName}}</strong>
+        <a ui-sref="create" class="pull-right red"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+    </div>
+    <div class="panel-body">
+        <!-- Table -->
+        <table class="table" ng-show="!loading">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Create date</td>
+            </tr>
+            <tr ng-repeat="item in items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.date * 1000 | date:"h:mm:ss a 'on' d/MM/yyyy"}}</td>
+            </tr>
+        </table>
+        <div ng-show="loading">Loading...</div>
+
+        <div ng-show="!loading && pagination.total > 10">
+            <uib-pagination total-items="pagination.total" ng-model="pagination.current" max-size="pagination.maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages"></uib-pagination>
+        </div>
+    </div>
+</div>
