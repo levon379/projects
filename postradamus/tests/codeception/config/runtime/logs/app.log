@@ -1,0 +1,330 @@
+2015-03-13 09:46:28 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The view file does not exist: C:\xampp\htdocs\teespy\tests\codeception\config\views\site/login.php' in C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php:226
+Stack trace:
+#0 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#1 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('/site/login', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\teespy\app\controllers\SiteController.php(209): yii\base\Controller->render('/site/login', Array)
+#3 [internal function]: app\controllers\SiteController->actionLogin()
+#4 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#7 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#8 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\teespy\app\web\index-test.php(19): yii\base\Application->run()
+#10 {main}
+2015-03-13 09:46:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Symfony2 BrowserKit'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\ImageMagick-6.7.7-Q16;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Git\\cmd;C:\\xampp\\php\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\xampp\\htdocs\\teespy\\vendor\\bin;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\nodejs;C:\\Program Files (x86)\\nodejs\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/postradamus/backend/web/index-test.php'
+    'REMOTE_PORT' => '65424'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/postradamus/backend/web/index-test.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/postradamus/backend/web/index-test.php'
+    'PHP_SELF' => '/postradamus/backend/web/index-test.php'
+    'REQUEST_TIME_FLOAT' => 1426265188.175
+    'REQUEST_TIME' => 1426265188
+]
+2015-03-13 09:46:28 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The view file does not exist: C:\xampp\htdocs\teespy\tests\codeception\config\views\site/login.php' in C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php:226
+Stack trace:
+#0 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#1 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('/site/login', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\teespy\app\controllers\SiteController.php(209): yii\base\Controller->render('/site/login', Array)
+#3 [internal function]: app\controllers\SiteController->actionLogin()
+#4 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#7 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#8 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\teespy\app\web\index-test.php(19): yii\base\Application->run()
+#10 {main}
+2015-03-13 09:46:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Symfony2 BrowserKit'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\ImageMagick-6.7.7-Q16;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Git\\cmd;C:\\xampp\\php\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\xampp\\htdocs\\teespy\\vendor\\bin;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\nodejs;C:\\Program Files (x86)\\nodejs\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/postradamus/backend/web/index-test.php'
+    'REMOTE_PORT' => '65424'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/postradamus/backend/web/index-test.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/postradamus/backend/web/index-test.php'
+    'PHP_SELF' => '/postradamus/backend/web/index-test.php'
+    'REQUEST_TIME_FLOAT' => 1426265188.175
+    'REQUEST_TIME' => 1426265188
+]
+2015-03-13 09:46:28 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The view file does not exist: C:\xampp\htdocs\teespy\tests\codeception\config\views\site/login.php' in C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php:226
+Stack trace:
+#0 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#1 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('/site/login', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\teespy\app\controllers\SiteController.php(209): yii\base\Controller->render('/site/login', Array)
+#3 [internal function]: app\controllers\SiteController->actionLogin()
+#4 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#7 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#8 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\teespy\app\web\index-test.php(19): yii\base\Application->run()
+#10 {main}
+2015-03-13 09:46:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Symfony2 BrowserKit'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\ImageMagick-6.7.7-Q16;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Git\\cmd;C:\\xampp\\php\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\xampp\\htdocs\\teespy\\vendor\\bin;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\nodejs;C:\\Program Files (x86)\\nodejs\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/postradamus/backend/web/index-test.php'
+    'REMOTE_PORT' => '65424'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/postradamus/backend/web/index-test.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/postradamus/backend/web/index-test.php'
+    'PHP_SELF' => '/postradamus/backend/web/index-test.php'
+    'REQUEST_TIME_FLOAT' => 1426265188.175
+    'REQUEST_TIME' => 1426265188
+]
+2015-03-13 09:46:28 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The view file does not exist: C:\xampp\htdocs\teespy\tests\codeception\config\views\site/login.php' in C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php:226
+Stack trace:
+#0 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#1 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('/site/login', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\teespy\app\controllers\SiteController.php(209): yii\base\Controller->render('/site/login', Array)
+#3 [internal function]: app\controllers\SiteController->actionLogin()
+#4 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#7 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#8 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\teespy\app\web\index-test.php(19): yii\base\Application->run()
+#10 {main}
+2015-03-13 09:46:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Symfony2 BrowserKit'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\ImageMagick-6.7.7-Q16;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Git\\cmd;C:\\xampp\\php\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\xampp\\htdocs\\teespy\\vendor\\bin;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\nodejs;C:\\Program Files (x86)\\nodejs\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/postradamus/backend/web/index-test.php'
+    'REMOTE_PORT' => '65425'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/postradamus/backend/web/index-test.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/postradamus/backend/web/index-test.php'
+    'PHP_SELF' => '/postradamus/backend/web/index-test.php'
+    'REQUEST_TIME_FLOAT' => 1426265188.407
+    'REQUEST_TIME' => 1426265188
+]
+2015-03-13 09:46:28 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The view file does not exist: C:\xampp\htdocs\teespy\tests\codeception\config\views\site/login.php' in C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php:226
+Stack trace:
+#0 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#1 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('/site/login', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\teespy\app\controllers\SiteController.php(209): yii\base\Controller->render('/site/login', Array)
+#3 [internal function]: app\controllers\SiteController->actionLogin()
+#4 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#7 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#8 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\teespy\app\web\index-test.php(19): yii\base\Application->run()
+#10 {main}
+2015-03-13 09:46:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Symfony2 BrowserKit'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\ImageMagick-6.7.7-Q16;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Git\\cmd;C:\\xampp\\php\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\xampp\\htdocs\\teespy\\vendor\\bin;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\nodejs;C:\\Program Files (x86)\\nodejs\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/postradamus/backend/web/index-test.php'
+    'REMOTE_PORT' => '65425'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/postradamus/backend/web/index-test.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/postradamus/backend/web/index-test.php'
+    'PHP_SELF' => '/postradamus/backend/web/index-test.php'
+    'REQUEST_TIME_FLOAT' => 1426265188.407
+    'REQUEST_TIME' => 1426265188
+]
+2015-03-13 09:46:28 [127.0.0.1][-][-][error][yii\base\InvalidParamException] exception 'yii\base\InvalidParamException' with message 'The view file does not exist: C:\xampp\htdocs\teespy\tests\codeception\config\views\site/login.php' in C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php:226
+Stack trace:
+#0 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('C:\\xampp\\htdocs...', Array, Object(app\controllers\SiteController))
+#1 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(367): yii\base\View->render('/site/login', Array, Object(app\controllers\SiteController))
+#2 C:\xampp\htdocs\teespy\app\controllers\SiteController.php(209): yii\base\Controller->render('/site/login', Array)
+#3 [internal function]: app\controllers\SiteController->actionLogin()
+#4 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('login', Array)
+#7 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\web\Application.php(83): yii\base\Module->runAction('site/login', Array)
+#8 C:\xampp\htdocs\teespy\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 C:\xampp\htdocs\teespy\app\web\index-test.php(19): yii\base\Application->run()
+#10 {main}
+2015-03-13 09:46:28 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'site/login'
+]
+
+$_SERVER = [
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_USER_AGENT' => 'Symfony2 BrowserKit'
+    'PATH' => 'C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files (x86)\\ImageMagick-6.7.7-Q16;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Git\\cmd;C:\\xampp\\php\\;C:\\Program Files (x86)\\QuickTime\\QTSystem\\;C:\\xampp\\htdocs\\teespy\\vendor\\bin;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files (x86)\\nodejs;C:\\Program Files (x86)\\nodejs\\;'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.10 (Win32) OpenSSL/1.0.1i PHP/5.6.3'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/postradamus/backend/web/index-test.php'
+    'REMOTE_PORT' => '65425'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Flogin'
+    'REQUEST_URI' => '/postradamus/backend/web/index-test.php?r=site%2Flogin'
+    'SCRIPT_NAME' => '/postradamus/backend/web/index-test.php'
+    'PHP_SELF' => '/postradamus/backend/web/index-test.php'
+    'REQUEST_TIME_FLOAT' => 1426265188.407
+    'REQUEST_TIME' => 1426265188
+]

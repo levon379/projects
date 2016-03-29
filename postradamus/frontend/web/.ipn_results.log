@@ -1,0 +1,96 @@
+[06/20/2014 5:14 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+
+[06/20/2014 5:16 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+
+[06/20/2014 5:17 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+
+[06/20/2014 5:35 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+
+[06/20/2014 5:35 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+
+[06/20/2014 5:36 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+
+[06/20/2014 5:36 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+
+[06/20/2014 5:36 PM] - FAIL: IPN Validation Failed.
+IPN POST Vars from Paypal:
+
+IPN Response from Paypal Server:
+ HTTP/1.0 302 Found
+Location: https://www.sandbox.paypal.com
+Server: BigIP
+Connection: close
+Content-Length: 0
+
+
+

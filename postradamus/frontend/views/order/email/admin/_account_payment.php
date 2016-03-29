@@ -1,0 +1,1 @@
+We received a payment of $<?=$amount?> for user: <?=$model->first_name?> (<?=$model->email?>).
