@@ -1,0 +1,195 @@
+
+.editbutton {
+    /*height: 30px;*/
+    margin-top: 2px;
+    background: #000;
+}
+
+.borderless tr td  {
+    border: none !important;
+    /*padding: 0px !important;*/
+}
+
+.table-borderless > tbody > tr > td {
+    border: none;
+}
+
+.no-borders { border: none !important; }
+
+.swotheading {
+	margin-top: 5px;
+	padding-bottom: 5px;
+    font-size: 19px;
+    display: inline-block;
+}
+
+.swot-toolbar {
+    display: none;
+    position: relative;
+    left: -40px;
+    margin-right: -60px;
+    margin-top: -10px;
+}
+
+.shape{
+    border-style: solid; border-width: 0 70px 40px 0; float:right; height: 0px; width: 0px;
+    -ms-transform:rotate(360deg); /* IE 9 */
+    -o-transform: rotate(360deg);  /* Opera 10.5 */
+    -webkit-transform:rotate(360deg); /* Safari and Chrome */
+    transform:rotate(360deg);
+}
+
+.shape-text{
+    color:#fff; font-size:12px; font-weight:bold; position:relative; right:-40px; top:2px; white-space: nowrap;
+    -ms-transform:rotate(30deg); /* IE 9 */
+    -o-transform: rotate(360deg);  /* Opera 10.5 */
+    -webkit-transform:rotate(30deg); /* Safari and Chrome */
+    transform:rotate(30deg);
+}
+
+.project {
+    min-height:300px;
+    min-width: 200px;
+    height:auto;
+}
+
+.project{
+    background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+}
+
+.project-radius{
+    border-radius:7px;
+}
+
+.project-default {    border-color: #999999; }
+.project-default .shape{
+    border-color: transparent #999999 transparent transparent;
+    border-color: rgba(255,255,255,0) #999999 rgba(255,255,255,0) rgba(255,255,255,0);
+}
+
+.project-danger {    border-color: #d9534f; }
+.project-danger .shape{
+    border-color: transparent #d9534f transparent transparent;
+    border-color: rgba(255,255,255,0) #d9534f rgba(255,255,255,0) rgba(255,255,255,0);
+}
+
+.project-success {	border-color: #5cb85c; }
+.project-success .shape{
+    border-color: transparent #5cb85c transparent transparent;
+    border-color: rgba(255,255,255,0) #5cb85c rgba(255,255,255,0) rgba(255,255,255,0);
+}
+
+.project-primary {	border-color: #428bca; }
+.project-primary .shape{
+    border-color: transparent #428bca transparent transparent;
+    border-color: rgba(255,255,255,0) #428bca rgba(255,255,255,0) rgba(255,255,255,0);
+}
+
+.project-info {	border-color: #5bc0de; }
+.project-info .shape{
+    border-color: transparent #5bc0de transparent transparent;
+    border-color: rgba(255,255,255,0) #5bc0de rgba(255,255,255,0) rgba(255,255,255,0);
+}
+
+.project-warning {	border-color: #f0ad4e; }
+.project-warning .shape{
+    border-color: transparent #f0ad4e transparent transparent;
+    border-color: rgba(255,255,255,0) #f0ad4e rgba(255,255,255,0) rgba(255,255,255,0);
+}
+
+.project-content {
+    padding:0 20px 10px;
+}
+
+.list-container{
+
+}
+
+.actionMenu{
+    display:none;
+    width:300px;
+    height:40px;
+    background-color:red;
+}
+
+.widget .panel-body { padding:0px; }
+.widget .list-group { margin-bottom: 0; }
+.widget .panel-title { display:inline }
+.widget .label-info { float: right; }
+.widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+.widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
+.widget .mic-info { color: #666666;font-size: 11px; }
+.widget .action { margin-top:5px; }
+.widget .comment-text { font-size: 12px; }
+.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
+.navbar-brand {
+    max-width: 50%;
+}
+
+@media screen and (min-width: 768px) {
+    #category-modal .modal-dialog  {width:600px;  top:-35px;  outline: none;}
+    #swots-modal .modal-dialog  {width:750px;  top:-35px;  outline: none;}
+}
+
+.ui-state-highlight { height: 1.5em; line-height: 1.2em; }
+
+/*
+    Text fields
+*/
+div.input-group-option:last-child span.input-group-addon-remove{
+    display: none;
+}
+
+div.input-group-option:last-child input.form-control{
+    border-bottom-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+div.input-group-option span.input-group-addon-remove{
+	cursor: pointer;
+}
+
+div.input-group-option{
+    margin-bottom: 3px;
+}
+
+.center-block {
+  display: block;
+  width:950px;  
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*
+    Text fields
+*/
+div.input-group-option:last-child span.input-group-addon-remove{
+    display: none;
+}
+
+div.input-group-option:last-child input.form-control{
+    border-bottom-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+div.input-group-option span.input-group-addon-remove{
+	cursor: pointer;
+}
+
+div.input-group-option{
+    margin-bottom: 3px;
+}
+
+.modal.slide .modal-dialog {
+    -webkit-transition: -webkit-transform .3s ease-out;
+    -o-transition:      -o-transform .3s ease-out;
+    transition:         transform .3s ease-out;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+
+.modal.in .modal-dialog {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
