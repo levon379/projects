@@ -1,0 +1,628 @@
+<?php
+class payment_model extends CI_Model
+{
+    
+	//###############################################################//
+	//############### INITIALIZE CONSTRUCTOR CLASS ##################//
+	//###############################################################//
+	
+	function  __construct() 
+	{
+        parent::__construct();
+    }
+	
+	//Function to listing whole payment from reservation table
+	function get_payment($type="")
+	{
+		if($type=="")//Whole Payment
+		{
+			$this->db->order_by("id", "desc");
+			$result=$this->db->get_where("lb_reservation", array("parent_id"=>""))->result_array();
+		}
+
+		elseif($type=="partial")//Partial Payment
+		{
+			$this->db->order_by("id", "desc");
+			$result=$this->db->get_where("lb_reservation", array("reservation_status"=>"En Attente","parent_id"=>""))->result_array();
+		}
+		elseif($type=="confirm")//Active Payment
+		{
+			$this->db->order_by("id", "desc");
+			$result=$this->db->get_where("lb_reservation", array("reservation_status"=>"Confirmée","parent_id"=>""))->result_array();
+		}
+		elseif($type=="paid")//Active Payment
+		{
+			$this->db->order_by("id", "desc");
+			$result=$this->db->get_where("lb_reservation", array("reservation_status"=>"Payée","parent_id"=>""))->result_array();
+		}
+		elseif($type=="cancelled")//Cancelled Payment
+		{
+			$this->db->order_by("id", "desc");
+			$result=$this->db->get_where("lb_reservation", array("reservation_status"=>"Annulée","parent_id"=>""))->result_array();
+		}
+
+		$default_language=$this->db->get_where("mast_language", array("set_as_default"=>"Y"))->result_array();
+		$default_language_id=$default_language[0]['id'];		
+		$default_currency_arr=$this->db->get_where("lb_currency_master", array("set_as_default"=>"Y"))->result_array();
+		$default_currency=$default_currency_arr[0]['currency_symbol'];
+
+		$payment_arr=array();
+		$i=0;
+		foreach($result as $row)
+		{
+			$bungalow_id=$row['bunglow_id'];
+			$bungalow_details=$this->db->get_where("lb_bunglow_lang", array("bunglow_id"=>$bungalow_id, "language_id"=>$default_language_id))->result_array();
+			
+			$user_id=$row['user_id'];
+		    $user_details=$this->db->get_where("lb_users", array("id"=>$user_id))->result_array();
+			$amount_to_be_paid = $row['amount_to_be_paid'];
+			$parent_result=$this->db->get_where("lb_reservation", array("parent_id"=>$row['id']))->result_array();
+			$b_name_part1 = explode("<span>", $bungalow_details[0]['bunglow_name']);
+			$parent_bunglow = trim($b_name_part1[0]);
+
+			if(count($parent_result)) {
+				$b_id = '';
+				foreach($parent_result as $prow)
+				{
+					if($b_id != $prow['bunglow_id']) {
+						$b_id = $prow['bunglow_id'];
+						$parent_bungalow_details=$this->db->get_where("lb_bunglow_lang", array("bunglow_id"=>$prow['bunglow_id'], "language_id"=>$default_language_id))->result_array();
+						$b_name_part = explode("<span>", $parent_bungalow_details[0]['bunglow_name']);
+						$parent_bunglow .= ", ".$b_name_part[0];
+						$amount_to_be_paid = (int)($amount_to_be_paid + $prow["amount_to_be_paid"]);
+					}
+				}
+			}
+
+			$admin_arr=$this->db->get_where("mast_admin_info", array('id'=>$row['created_by']))->result_array();
+			$created_by= ucfirst($admin_arr[0]['username']);
+		
+			$payment_arr[$i]['id']=$row['id'];
+			$payment_arr[$i]['name']=$user_details[0]['name'];
+			$payment_arr[$i]['paid_amount']=$default_currency.$amount_to_be_paid;
+			$payment_arr[$i]['payment_mode']=$row['payment_mode'];
+			$payment_arr[$i]['reservation_date']=$row['reservation_date'];
+			$payment_arr[$i]['bunglow_name']=$bungalow_details[0]['bunglow_name'];
+			$payment_arr[$i]['arrival_date']=$row['arrival_date'];
+			$payment_arr[$i]['leave_date']=$row['leave_date'];
+			$payment_arr[$i]['reservation_status']=$row['reservation_status'];
+			$payment_arr[$i]['payment_status']=$row['payment_status'];
+			$payment_arr[$i]['parent_bunglow']=$parent_bunglow;
+			//$payment_arr[$i]['is_active']=$row['is_active'];
+			$payment_arr[$i]['source']=$row['source'];
+			$payment_arr[$i]['created_by']=$created_by;
+			$i++;
+		}
+		//print_r($payment_arr);
+		return $payment_arr;
+	}
+	
+	
+	//function to change status of reservation
+	function ajax_change_reservation_status($id, $status)
+	{
+		$this->db->update("lb_reservation", array("reservation_status"=>$status), array("id"=>$id));
+	}
+
+	//function to change status of reservation
+	function ajax_edit_amount($id, $txt_discount='',$txt_total='',$txt_paid_amount='',$txt_due_amount='',$admin_comments='',$invoice_comments='',$source='')
+	{
+		$this->db->update("lb_reservation", array("discount"=>$txt_discount, "amount_to_be_paid" => $txt_total,  "paid_amount" => $txt_paid_amount,  "due_amount" => $txt_due_amount,  "admin_comments" => nl2br($admin_comments), "invoice_comments" =>nl2br($invoice_comments), "source" => $source), array("id"=>$id));
+	}
+
+	function ajax_change_amount($id, $paid,$due,$pay, $payment_mode='',$date_payment_mode='')
+	{
+
+		$paid = (int)($paid != "") ?$paid :"0";
+		$due = (int)($due != "") ?$due :"0";
+		$pay = (int)($pay != "") ?$pay :"0";
+		
+		$paid = $paid + $pay;
+		$due = $due -$pay;
+		
+		if($due == "0"){
+			$reservation_status = "Confirmé";
+			$payment_status = "Réglé";
+		}
+
+		$res_details=$this->db->get_where("lb_reservation", array("id"=>$id))->result_array();
+		$invoice_comments = $res_details[0]['invoice_comments'];
+
+		if($pay > 0){
+			$default_currency_arr=$this->db->get_where("lb_currency_master", array("set_as_default"=>"Y"))->result_array();
+			$default_currency=$default_currency_arr[0]['currency_symbol'];
+			$invoice_comments .= "<br/> > Amount = ".$default_currency.$pay.", Date = ".$date_payment_mode.", Payment Mode = ".$payment_mode;
+		}
+
+		$this->db->update("lb_reservation", array("paid_amount"=>$paid, "due_amount"=>$due,"payment_mode"=>$payment_mode,"date_payment_mode" => $date_payment_mode, "invoice_comments"=> $invoice_comments), array("id"=>$id));
+	}
+
+	function ajax_payment($id,$payment_mode="",$date_payment_mode="")
+	{
+		$this->db->update("lb_reservation", array("payment_mode"=>$payment_mode,"date_payment_mode" => $date_payment_mode), array("id"=>$id));
+	}
+
+	//function to change status of payment
+	function ajax_change_payment_status($id, $status)
+	{
+		echo $status."aaa";
+		$this->db->update("lb_reservation", array("payment_status"=>$status), array("id"=>$id));
+	}
+	
+	//function to change status of payment
+	function ajax_change_active_inactive($id, $status)
+	{
+		$this->db->update("lb_reservation", array("is_active"=>$status), array("id"=>$id));
+	}
+	
+	//function to delete payment
+	function ajax_delete_payment($id)
+	{
+		$reservation_details=$this->db->get_where("lb_reservation", array("id"=>$id))->result_array();
+		$user_id=$reservation_details[0]['user_id'];
+		$reservation_date=$reservation_details[0]['reservation_date'];
+		
+		$parent_info=$this->db->get_where("lb_reservation", array("parent_id"=>$id,"user_id"=>$user_id))->result_array();
+		if(count($parent_info)>0) //If invoice is not available
+		{
+			foreach ($parent_info as $parent_details) 
+			{
+				$this->db->delete("lb_reservation", array("id"=>$parent_details['id']));
+			}
+		}
+		$this->db->delete("lb_reservation", array("id"=>$id));
+	}
+	
+	
+	//Function to get payment details
+	function get_payment_details_old($payment_id)
+	{
+		$default_language=$this->db->get_where("mast_language", array("set_as_default"=>"Y"))->result_array();
+		$default_language_id=$default_language[0]['id'];
+		
+		$default_currency_arr=$this->db->get_where("lb_currency_master", array("set_as_default"=>"Y"))->result_array();
+		$default_currency=$default_currency_arr[0]['currency_symbol'];
+		
+		$payment_details_arr=array();
+		$payment_details=$this->db->get_where("lb_reservation", array("id"=>$payment_id))->result_array();
+		
+		$user_id=$payment_details[0]['user_id'];
+		$user_details=$this->db->get_where("lb_users", array("id"=>$user_id))->result_array();
+		
+		$bungalow_id=$payment_details[0]['bunglow_id'];
+		$bungalow_details=$this->db->get_where("lb_bunglow_lang", array("bunglow_id"=>$bungalow_id, "language_id"=>$default_language_id))->result_array();
+		
+		
+		//Getting bungalow rates
+		$accommodation=(ceil(abs(strtotime($payment_details[0]['leave_date']) - strtotime($payment_details[0]['arrival_date'])) / 86400) + 1);
+		
+		/*$q_val = explode("/",$payment_details[0]['arrival_date']);		 
+		$season_id = $this->getSeasons($q_val[0],$q_val[1],$q_val[2]);
+
+		//Get rate details with season id and bungalow_id
+		$rate_details_arr=$this->db->get_where("lb_bunglow_rates", array("bunglow_id"=>$bungalow_id, "season_id"=>$season_id))->result_array();
+*/
+
+		//yrcode comment
+		/*$q_val = explode("-",$payment_details[0]['arrival_date']);		 
+		$season_id = $this->getSeasons($q_val[2],$q_val[1],$q_val[0]);
+
+		$rate_details_arr=$this->db->get_where("lb_bunglow_rates", array("bunglow_id"=>$bungalow_id, "season_id"=>$season_id))->result_array();*/
+		// yrcode comment end
+		
+		//$bungalow_rate=ceil($payment_details[0]['amount_to_be_paid'] - ($payment_details[0]['amount_to_be_paid'] * 4/100));		
+		$nights = ceil(abs(strtotime($payment_details[0]['leave_date']) - strtotime($payment_details[0]['arrival_date'])) / 86400) ;
+		//$nights = $nights;
+		//echo $nights."aaa".$payment_details[0]['arrival_date']."aaa".$payment_details[0]['leave_date']; 
+		//die;
+		//$bungalow_rate = $nights * $rate_details_arr[0]['extranight_perday_europrice'];
+		
+		
+		//yrcode
+		$arrival_date_arr=explode("-",$payment_details[0]['arrival_date']);
+		$arrival_date = mktime(0,0,0, $arrival_date_arr[1], $arrival_date_arr[2], $arrival_date_arr[0]);
+		$leave_date_arr=explode("-", $payment_details[0]['leave_date']);
+		$leave_date=mktime(0,0,0, $leave_date_arr[1], $leave_date_arr[2], $leave_date_arr[0]);
+		$date_arr=$this->home_model->dateRanges($arrival_date, $leave_date);
+		$days_count=count($date_arr) - 1;
+		$nights = $days_count;
+		
+		$total_bungalow_rate=0;
+		$total_bungalow_rate_dollar=0;
+		$discount=0;
+		for($i=0; $i<$days_count; $i++)
+		{
+			$q_val='';
+			$season_id='';
+			$q_val = explode("-",$date_arr[$i]);		 
+			$season_id = $this->getSeasons($q_val[2],$q_val[1],$q_val[0]);
+
+			$rate_details_arr=$this->db->get_where("lb_bunglow_rates", array("bunglow_id"=>$bungalow_id, "season_id"=>$season_id))->result_array();
+			$total_bungalow_rate=$total_bungalow_rate+intval($rate_details_arr[0]['rate_per_day_euro']); //Multiplying with total days of staying
+			$total_bungalow_rate_dollar+=$rate_details_arr[0]['rate_per_day_dollar'];
+			//$discount+=$rate_details_arr[0]['discount_per_night']; //discount in %
+		}
+		
+		// end yrcode
+		
+		
+		if( $nights > 6 ){
+			$bungalow_rate = $nights * $rate_details_arr[0]['extranight_perday_europrice'];
+		}else {
+			//$bungalow_rate = $rate_details_arr[0]['rate_per_day_euro'] * $nights;
+			$bungalow_rate = $total_bungalow_rate;
+		}
+
+		//Getting options rates
+		$total_options_rate_arr=array();
+		$options_ids=$payment_details[0]['options_id'];
+		if($options_ids!="")
+		{
+			$options_id_arr=explode(",", $options_ids);
+			$x=0;
+			$options_rate_arr=explode(",", $payment_details[0]['options_rate']);
+			foreach($options_id_arr as $options)
+			{
+				$options_details=$this->db->get_where("lb_bunglow_options_lang", array("options_id"=>$options, "language_id"=>$default_language_id))->result_array();
+				$total_options_rate_arr[$x]['option_name']=$options_details[0]['options_name'];
+				$total_options_rate_arr[$x]['option_rate']=$default_currency.$options_rate_arr[$x];
+				$x++;
+			}
+		}
+	
+		
+		//Getting tax rates
+		$total_tax_rate_arr=array();
+		$tax_ids=$payment_details[0]['tax_id'];
+		if($tax_ids!="")
+		{
+			$tax_id_arr=explode(",", $tax_ids);
+			$x=0;
+			$tax_rate_arr=explode(",", $payment_details[0]['tax_rate']);
+			foreach($tax_id_arr as $tax_id)
+			{
+				$tax_value=$bungalow_rate*$tax_rate_arr[$x]/100;
+				$tax_details=$this->db->get_where("lb_tax_lang", array("tax_id"=>$tax_id, "language_id"=>$default_language_id))->result_array();
+				$total_tax_rate_arr[$x]['tax_name']=$tax_details[0]['tax_name']." (".$tax_rate_arr[$x]."%)";
+				$total_tax_rate_arr[$x]['tax_rate']=$default_currency.$tax_value;
+				$x++;
+			}
+		}
+
+		$payment_details_arr['reservation_id']=$payment_details[0]['id'];
+		$payment_details_arr['bunglow_id']=$payment_details[0]['bunglow_id'];
+		$payment_details_arr['parent_id']=$payment_details[0]['parent_id'];
+		$payment_details_arr['reservation_date']=$payment_details[0]['reservation_date'];
+		$payment_details_arr['user_id']=$user_id;
+		$payment_details_arr['user_name']=$user_details[0]['name'];
+		$payment_details_arr['user_email']=$user_details[0]['email'];
+		$payment_details_arr['user_phone']=$user_details[0]['contact_phone'];
+		$payment_details_arr['bunglow_under_booking']=$payment_details[0]['name'];
+		$payment_details_arr['more_phone']=$payment_details[0]['phone'];
+		$payment_details_arr['more_email']=$payment_details[0]['email'];
+		$payment_details_arr['arrival_date']=$payment_details[0]['arrival_date'];
+		$payment_details_arr['leave_date']=$payment_details[0]['leave_date'];
+		$payment_details_arr['accommodation']=$nights; //ceil(abs(strtotime($payment_details[0]['leave_date']) - strtotime($payment_details[0]['arrival_date'])) / 86400) ;
+		$payment_details_arr['bungalow_name']=$bungalow_details[0]['bunglow_name'];
+		$payment_details_arr['bungalow_rate']=$default_currency.$bungalow_rate;
+		$payment_details_arr['options_rate']=$total_options_rate_arr;
+		$payment_details_arr['discount']=$payment_details[0]['discount'];
+		$payment_details_arr['tax_rate']="4%";
+		$payment_details_arr['total']=$default_currency.$payment_details[0]['amount_to_be_paid'];
+		$payment_details_arr['paid_amount']=$default_currency.$payment_details[0]['paid_amount'];
+		$payment_details_arr['due_amount']=$default_currency.$payment_details[0]['due_amount'];
+		$payment_details_arr['payment_mode']=$payment_details[0]['payment_mode'];
+		$payment_details_arr['date_payment_mode']=$payment_details[0]['date_payment_mode'];
+		$payment_details_arr['invoice_number']=$payment_details[0]['invoice_number'];
+		$payment_details_arr['payment_status']=$payment_details[0]['payment_status'];
+		$payment_details_arr['reservation_status']=$payment_details[0]['reservation_status'];
+		$payment_details_arr['is_active']=$payment_details[0]['is_active'];
+		$payment_details_arr['admin_comments']=$payment_details[0]['admin_comments'];
+		$payment_details_arr['reservation_text']=$payment_details[0]['comments'];
+		$payment_details_arr['invoice_comments']=$payment_details[0]['invoice_comments'];
+		$payment_details_arr['source']=$payment_details[0]['source'];
+		$payment_details_arr['no_of_adult']=$payment_details[0]['no_of_adult'];
+		$payment_details_arr['no_of_extra_real_adult']=$payment_details[0]['no_of_extra_real_adult'];
+		$payment_details_arr['no_of_extra_adult']=$payment_details[0]['no_of_extra_adult'];
+		$payment_details_arr['no_of_extra_kid']=$payment_details[0]['no_of_extra_kid'];
+		$payment_details_arr['no_of_folding_bed_kid']=$payment_details[0]['no_of_folding_bed_kid'];
+		$payment_details_arr['no_of_folding_bed_adult']=$payment_details[0]['no_of_folding_bed_adult'];
+		$payment_details_arr['no_of_baby_bed']=$payment_details[0]['no_of_baby_bed'];
+		$payment_details_arr['created_by']=$payment_details[0]['created_by'];
+
+		//echo "<pre>";
+		//print_r($payment_details_arr);
+		//die;
+		return $payment_details_arr;
+	}
+	
+	
+	//Function to get payment details
+	function get_payment_details($payment_id)
+	{
+		$default_language=$this->db->get_where("mast_language", array("set_as_default"=>"Y"))->result_array();
+		$default_language_id=$default_language[0]['id'];
+		
+		$default_currency_arr=$this->db->get_where("lb_currency_master", array("set_as_default"=>"Y"))->result_array();
+		$default_currency= $default_currency_arr[0]['currency_symbol'];
+		
+		$payment_details_arr=array();
+		$payment_details=$this->db->get_where("lb_reservation", array("id"=>$payment_id))->result_array();
+		
+		$user_id=$payment_details[0]['user_id'];
+		$user_details=$this->db->get_where("lb_users", array("id"=>$user_id))->result_array();
+		
+		$bungalow_id=$payment_details[0]['bunglow_id'];
+		$bungalow_details=$this->db->get_where("lb_bunglow_lang", array("bunglow_id"=>$bungalow_id, "language_id"=>$default_language_id))->result_array();
+		
+		
+		//Getting bungalow rates
+		//$accommodation=(ceil(abs(strtotime($payment_details[0]['leave_date']) - strtotime($payment_details[0]['arrival_date'])) / 86400) + 1);
+		
+		/*$q_val = explode("/",$payment_details[0]['arrival_date']);		 
+		$season_id = $this->getSeasons($q_val[0],$q_val[1],$q_val[2]);
+
+		//Get rate details with season id and bungalow_id
+		$rate_details_arr=$this->db->get_where("lb_bunglow_rates", array("bunglow_id"=>$bungalow_id, "season_id"=>$season_id))->result_array();
+*/
+		//$bungalow_rate=ceil($payment_details[0]['amount_to_be_paid'] - ($payment_details[0]['amount_to_be_paid'] * 4/100));		
+		$accommodation=ceil(abs(strtotime($payment_details[0]['leave_date']) - strtotime($payment_details[0]['arrival_date'])) / 86400);
+		//$bungalow_rate=ceil($payment_details[0]['amount_to_be_paid'] - ($payment_details[0]['amount_to_be_paid'] * 4/100));		
+		
+		$q_val = explode("-",$payment_details[0]['arrival_date']);		 
+		$season_id = $this->getSeasons($q_val[2],$q_val[1],$q_val[0]);
+
+		$rate_details_arr=$this->db->get_where("lb_bunglow_rates", array("bunglow_id"=>$bungalow_id, "season_id"=>$season_id))->result_array();
+		if( $accommodation > 6 ){
+			$stay_euro = $bungalow_rate = $accommodation * $rate_details_arr[0]['extranight_perday_europrice'];
+		}else {
+			$stay_euro = $bungalow_rate = $rate_details_arr[0]['rate_per_day_euro'] * $accommodation;
+		}
+		$tot =0;
+		$val2 = $payment_details[0]['no_of_extra_real_adult'];
+		$val3 = $payment_details[0]['no_of_extra_adult'];
+		$val6 = $payment_details[0]['no_of_folding_bed_adult'];
+		if($val2 > 0) $tot = ($val2 * 15 * $accommodation);
+		if($val3 > 0) $tot += ($val3 * 15 * $accommodation);
+		if($val6 > 0) $tot += ($val6 * 15 * $accommodation);
+		$extra_person = $tot;
+		$tot = ($bungalow_rate + $tot);
+		$total_tax_value = ($tot * 4/100);
+
+		$amount_without_tax = ($bungalow_rate + $extra_person);
+		
+		//Getting options rates
+		$total_options_rate_arr=array();
+		$options_ids=$payment_details[0]['options_id'];
+		if($options_ids!="")
+		{
+			$options_id_arr=explode(",", $options_ids);
+			$x=0;
+			$options_rate_arr=explode(",", $payment_details[0]['options_rate']);
+			foreach($options_id_arr as $options)
+			{
+				$options_details=$this->db->get_where("lb_bunglow_options_lang", array("options_id"=>$options, "language_id"=>$default_language_id))->result_array();
+				$total_options_rate_arr[$x]['option_name']=$options_details[0]['options_name'];
+				$total_options_rate_arr[$x]['option_rate']=$default_currency.$options_rate_arr[$x];
+				$x++;
+			}
+		}
+	
+		
+		//Getting tax rates
+		$total_tax_rate_arr=array();
+		$tax_ids=$payment_details[0]['tax_id'];
+		if($tax_ids!="")
+		{
+			$tax_id_arr=explode(",", $tax_ids);
+			$x=0;
+			$tax_rate_arr=explode(",", $payment_details[0]['tax_rate']);
+			foreach($tax_id_arr as $tax_id)
+			{
+				$tax_value=$bungalow_rate*$tax_rate_arr[$x]/100;
+				$tax_details=$this->db->get_where("lb_tax_lang", array("tax_id"=>$tax_id, "language_id"=>$default_language_id))->result_array();
+				$total_tax_rate_arr[$x]['tax_name']=$tax_details[0]['tax_name']." (".$tax_rate_arr[$x]."%)";
+				$total_tax_rate_arr[$x]['tax_rate']=$default_currency.$tax_value;
+				$x++;
+			}
+		}
+
+		$payment_details_arr[0]['reservation_id']=$payment_details[0]['id'];
+		$payment_details_arr[0]['reservation_date']=$payment_details[0]['reservation_date'];
+		$payment_details_arr[0]['user_id']=$user_id;
+		$payment_details_arr[0]['user_name']=$user_details[0]['name'];
+		$payment_details_arr[0]['user_email']=$user_details[0]['email'];
+		$payment_details_arr[0]['bunglow_under_booking']=$payment_details[0]['name'];
+		$payment_details_arr[0]['more_phone']=$payment_details[0]['phone'];
+		$payment_details_arr[0]['more_email']=$payment_details[0]['email'];
+		$payment_details_arr[0]['arrival_date']=$payment_details[0]['arrival_date'];
+		$payment_details_arr[0]['leave_date']=$payment_details[0]['leave_date'];
+		$payment_details_arr[0]['accommodation']=ceil(abs(strtotime($payment_details[0]['leave_date']) - strtotime($payment_details[0]['arrival_date'])) / 86400) ;
+		$payment_details_arr[0]['bungalow_name']=$bungalow_details[0]['bunglow_name'];
+		$payment_details_arr[0]['bungalow_rate']=$default_currency.$bungalow_rate;
+		$payment_details_arr[0]['options_rate']=$total_options_rate_arr;
+		$payment_details_arr[0]['discount']=$payment_details[0]['discount'];
+		$payment_details_arr[0]['tax_rate']="4%";
+		$payment_details_arr[0]['total']=$default_currency.$payment_details[0]['amount_to_be_paid'];
+		$payment_details_arr[0]['paid_amount']=$default_currency.$payment_details[0]['paid_amount'];
+		$payment_details_arr[0]['due_amount']=$default_currency.$payment_details[0]['due_amount'];
+		$payment_details_arr[0]['payment_mode']=$payment_details[0]['payment_mode'];
+		$payment_details_arr[0]['date_payment_mode']=$payment_details[0]['date_payment_mode'];
+		$payment_details_arr[0]['invoice_number']=$payment_details[0]['invoice_number'];
+		$payment_details_arr[0]['payment_status']=$payment_details[0]['payment_status'];
+		$payment_details_arr[0]['reservation_status']=$payment_details[0]['reservation_status'];
+		$payment_details_arr[0]['is_active']=$payment_details[0]['is_active'];
+		$payment_details_arr[0]['admin_comments']=$payment_details[0]['admin_comments'];
+		$payment_details_arr[0]['reservation_text']=$payment_details[0]['comments'];
+		$payment_details_arr[0]['invoice_comments']=$payment_details[0]['invoice_comments'];
+		$payment_details_arr[0]['source']=$payment_details[0]['source'];
+		$payment_details_arr[0]['no_of_adult']=$payment_details[0]['no_of_adult'];
+		$payment_details_arr[0]['no_of_extra_real_adult']=$payment_details[0]['no_of_extra_real_adult'];
+		$payment_details_arr[0]['no_of_extra_adult']=$payment_details[0]['no_of_extra_adult'];
+		$payment_details_arr[0]['no_of_extra_kid']=$payment_details[0]['no_of_extra_kid'];
+		$payment_details_arr[0]['no_of_folding_bed_kid']=$payment_details[0]['no_of_folding_bed_kid'];
+		$payment_details_arr[0]['no_of_folding_bed_adult']=$payment_details[0]['no_of_folding_bed_adult'];
+		$payment_details_arr[0]['no_of_baby_bed']=$payment_details[0]['no_of_baby_bed'];
+		$payment_details_arr[0]['created_by']=$payment_details[0]['created_by'];
+		$payment_details_arr[0]['reservation_amount']=$amount_without_tax;
+		$payment_details_arr[0]['extra_person']=$extra_person;
+		$payment_details_arr[0]['tax']=$total_tax_value;
+
+		$parent_info=$this->db->get_where("lb_reservation", array("parent_id"=>$payment_id))->result_array();
+		if(count($parent_info)>0) //If invoice is not available
+		{
+			$cnt = 0;
+			foreach ($parent_info as $parent_details) {
+				$cnt++;
+
+				$pextra_person = $pstay_euro = $parent_bungalow_rate = $ptot = $ptotal_tax_value = $pval2 =  $pval3 =  $pval6 = $pamount_without_tax = 0;
+				$parent_bungalow_details=$this->db->get_where("lb_bunglow_lang", array("bunglow_id"=>$parent_details["bunglow_id"], "language_id"=>$default_language_id))->result_array();
+			//	$parent_bungalow_rate=ceil($parent_details['amount_to_be_paid'] - ($parent_details['amount_to_be_paid'] * 4/100));			
+				$parent_accommodation=ceil(abs(strtotime($parent_details['leave_date']) - strtotime($parent_details['arrival_date'])) / 86400);	
+
+				$p_user_id=$parent_details['user_id'];
+				$parent_user_details=$this->db->get_where("lb_users", array("id"=>$p_user_id))->result_array();
+
+				$pq_val = explode("-",$parent_details['arrival_date']);		 
+				$pseason_id = $this->getSeasons($pq_val[2],$pq_val[1],$pq_val[0]);
+
+				$prate_details_arr=$this->db->get_where("lb_bunglow_rates", array("bunglow_id"=>$parent_details["bunglow_id"], "season_id"=>$pseason_id))->result_array();
+				if( $parent_accommodation > 6 ){
+					$pstay_euro = $parent_bungalow_rate = $parent_accommodation * $prate_details_arr[0]['extranight_perday_europrice'];
+				}else {
+					$pstay_euro = $parent_bungalow_rate = $prate_details_arr[0]['rate_per_day_euro'] * $parent_accommodation;
+				}
+				$pval2 = $parent_details['no_of_extra_real_adult'];
+				$pval3 = $parent_details['no_of_extra_adult'];
+				$pval6 = $parent_details['no_of_folding_bed_adult'];
+				if($pval2 > 0) $ptot = ($pval2 * 15 * $parent_accommodation);
+				if($pval3 > 0) $ptot += ($pval3 * 15 * $parent_accommodation);
+				if($pval6 > 0) $ptot += ($pval6 * 15 * $parent_accommodation);
+				$pextra_person = $ptot;
+				$ptot = ($parent_bungalow_rate + $ptot);
+				$ptotal_tax_value = ($ptot * 4/100);
+
+				$pamount_without_tax = ($parent_bungalow_rate + $pextra_person);
+
+				$payment_details_arr[$cnt]['reservation_id']=$parent_details['id'];
+				$payment_details_arr[$cnt]['reservation_date']=$parent_details['reservation_date'];
+				$payment_details_arr[$cnt]['user_id']=$p_user_id;
+				$payment_details_arr[$cnt]['user_name']=$parent_user_details[$cnt]['name'];
+				$payment_details_arr[$cnt]['user_email']=$parent_user_details[$cnt]['email'];
+				$payment_details_arr[$cnt]['bunglow_under_booking']=$parent_details['name'];
+				$payment_details_arr[$cnt]['more_phone']=$parent_details['phone'];
+				$payment_details_arr[$cnt]['more_email']=$parent_details['email'];
+				$payment_details_arr[$cnt]['arrival_date']=$parent_details['arrival_date'];
+				$payment_details_arr[$cnt]['leave_date']=$parent_details['leave_date'];
+				$payment_details_arr[$cnt]['accommodation']=ceil(abs(strtotime($parent_details['leave_date']) - strtotime($parent_details['arrival_date'])) / 86400) ;
+				$payment_details_arr[$cnt]['bungalow_name']=$parent_bungalow_details[0]['bunglow_name'];
+				$payment_details_arr[$cnt]['bungalow_rate']=$default_currency.$parent_bungalow_rate;
+				$payment_details_arr[$cnt]['options_rate']='';
+				$payment_details_arr[$cnt]['discount']=$parent_details['discount'];
+				$payment_details_arr[$cnt]['tax_rate']="4%";
+				$payment_details_arr[$cnt]['total']=$default_currency.$parent_details['amount_to_be_paid'];
+				$payment_details_arr[$cnt]['paid_amount']=$default_currency.$parent_details['paid_amount'];
+				$payment_details_arr[$cnt]['due_amount']=$default_currency.$parent_details['due_amount'];
+				$payment_details_arr[$cnt]['payment_mode']=$parent_details['payment_mode'];
+				$payment_details_arr[$cnt]['date_payment_mode']=$parent_details['date_payment_mode'];
+				$payment_details_arr[$cnt]['invoice_number']=$parent_details['invoice_number'];
+				$payment_details_arr[$cnt]['payment_status']=$parent_details['payment_status'];
+				$payment_details_arr[$cnt]['reservation_status']=$parent_details['reservation_status'];
+				$payment_details_arr[$cnt]['is_active']=$parent_details['is_active'];
+				$payment_details_arr[$cnt]['admin_comments']=$parent_details['admin_comments'];
+				$payment_details_arr[$cnt]['reservation_text']=$parent_details['comments'];
+				$payment_details_arr[$cnt]['invoice_comments']=$parent_details['invoice_comments'];
+				$payment_details_arr[$cnt]['source']=$parent_details['source'];
+				$payment_details_arr[$cnt]['no_of_adult']=$parent_details['no_of_adult'];
+				$payment_details_arr[$cnt]['no_of_extra_real_adult']=$parent_details['no_of_extra_real_adult'];
+				$payment_details_arr[$cnt]['no_of_extra_adult']=$parent_details['no_of_extra_adult'];
+				$payment_details_arr[$cnt]['no_of_extra_kid']=$parent_details['no_of_extra_kid'];
+				$payment_details_arr[$cnt]['no_of_folding_bed_kid']=$parent_details['no_of_folding_bed_kid'];
+				$payment_details_arr[$cnt]['no_of_folding_bed_adult']=$parent_details['no_of_folding_bed_adult'];
+				$payment_details_arr[$cnt]['no_of_baby_bed']=$parent_details['no_of_baby_bed'];
+				$payment_details_arr[$cnt]['created_by']=$parent_details['created_by'];
+				$payment_details_arr[$cnt]['reservation_amount']=$pamount_without_tax;
+				$payment_details_arr[$cnt]['extra_person']=$pextra_person;
+				$payment_details_arr[$cnt]['tax']=$ptotal_tax_value;
+
+			}
+		}
+		/*echo "<pre>";
+		print_r($payment_details_arr);
+		die;*/
+		return $payment_details_arr;
+	}
+	
+	
+	//Function to increase leave date
+	function ajax_increase_leave_date($reservation_id, $start_date, $leave_date)
+	{
+		$reservation_details=$this->db->get_where("lb_reservation", array("id"=>$reservation_id))->result_array();
+		$bungalow_id=$reservation_details[0]['bunglow_id'];
+		$query=$this->db->get_where("lb_reservation", array("bunglow_id"=>$bungalow_id))->result_array();
+		$date_arr=$this->dateRange($start_date, $leave_date);
+		$total_days=count($date_arr);
+		$available_date=array();
+		foreach($date_arr as $date)
+		{
+			$check_query=$this->db->query("SELECT * FROM `lb_reservation` WHERE `bunglow_id`='$bungalow_id' AND (`arrival_date` <= '$date' AND `leave_date` >= '$date')")->result_array();
+			if(count($check_query)==0)//If date is not reserved
+			{
+				$check_cleaning=$this->db->query("SELECT * FROM `lb_bunglow_cleaning` WHERE `bunglow_id`='$bungalow_id' AND `cleaning_date`='$date'")->result_array();
+				if(count($check_cleaning)==0)//Check if date is reserved for cleaning
+				{
+					$date_format_arr=explode("-", $date); //date format is yyyy-mm-dd. so change it to dd/mm/yyyy
+					$new_date_format=$date_format_arr[2]."/".$date_format_arr[1]."/".$date_format_arr[0];
+					array_push($available_date, $new_date_format);
+				}
+			}
+		}
+		if(count($available_date)==$total_days)//If User selected dates are not reserved
+		{
+			$this->db->update("lb_reservation", array("leave_date"=>$leave_date, "is_active"=>"ACTIVE"), array("id"=>$reservation_id));
+			return "available";
+		}
+		elseif(count($available_date)==0)
+		{
+			return "notavailable";
+		}
+		else
+		{
+			return implode(", ",$available_date);
+		}
+	}
+	
+	//Function for getting all dates between two dates
+	function dateRange($first_date, $last_date, $step = '+1 day', $format = 'Y-m-d' ) 
+	{ 
+		$dates = array();
+		$current = strtotime($first_date);
+		$last = strtotime($last_date);
+
+		while( $current <= $last ) 
+		{ 
+			$dates[] = date($format, $current);
+			$current = strtotime($step, $current);
+		}
+		return $dates;
+	}
+
+	//function to get season array
+	function getSeasons($day,$month,$year){
+		$cur_date = date('Y-m-d', mktime(0,0,0,$month,$day,$year));
+		$high_start_date = date('Y-m-d', mktime(0,0,0,12,15,$year));
+		$high_end_date = date('Y-m-d', mktime(0,0,0,4,14,($year+1)));
+
+		$low_start_date = date('Y-m-d', mktime(0,0,0,4,15,$year));
+		$low_end_date = date('Y-m-d', mktime(0,0,0,12,14,$year));
+		$season_id = 0;
+		if($cur_date >= $low_start_date && $cur_date <= $low_end_date) $season_id = "2";
+		else $season_id = "1";
+
+//echo $cur_date."*".$high_start_date."*".$high_end_date."*".$low_start_date."*".$low_end_date."---".$season_id;
+		return $season_id;
+	}
+}
+	
+
+?>

@@ -1,0 +1,154 @@
+@extends('layout.default')
+
+@section('content')
+<div class="content-sec">
+			<div class="breadcrumbs">
+				<ul>
+					<li><a href="/admin/dashboard" title=""><i class="fa fa-home"></i></a>/</li>
+					<li><a title="">User List</a></li>
+				</ul>
+			</div><!-- breadcrumbs -->
+			
+	<div class="container">
+	<div class="row">
+	@if (Session::get('errors'))
+                <p class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+					<?php print_r(Session::get('errors'));?>
+					@foreach (Session::get('errors')->all() as $error)
+						{{ $error }}
+					@endforeach
+					</p>
+            @endif
+            
+	<div class="col-md-12">
+       
+						<div class="col-md-12">
+						      {{ Form::open(array('url' => 'user/createSite', 'method' => 'post')) }}
+							<div class="widget-area">
+							<h2 class="widget-title"><strong>Wizard</strong> Form</h2>
+								<div class="wizard-form-h">
+									<div id="wizard" class="swMain">
+										<ul class="anchor">
+											<li><a href="#step-1" class="selected" isdone="1" rel="1">Step<span class="stepDesc">1</span></a></li>
+											
+										</ul>
+									<div class="stepContainer" style="height: 171px;"><div id="step-1" class="content" style="display: block;">	
+										<h2 class="StepTitle">Site Information</h2>
+											<div class="col-md-6">
+												<div class="inline-form">
+													<label class="c-label">Site Name</label><input class="input-style" type="text" name="site_name" placeholder="Site Name">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="inline-form">
+													<label class="c-label">Site Url</label><input class="input-style" type="text" name="site_url" placeholder="Site Url">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="inline-form">
+													<label class="c-label">EXCLUDED IPS</label><input type="text" name="ip" placeholder="EXCLUDED IPS">
+												</div>
+											</div>
+											<div class="col-md-6">
+                                                <div class="inline-form">
+                                                    <label class="c-label">TIME ZONE</label>
+													<select></select>
+                                                </div>
+                                            </div>
+
+										</div>
+										
+															
+								</div>	
+							</div>
+						</div>
+						</div>
+                     {{ Form::close() }}
+	                            <table class="table">
+										<tbody>
+
+
+                                            <div class="streaming-table">
+                                              <!--  <div class="progress progress-striped active w-tooltip">
+                                                    <div id="record_count" class="progress-bar progress-bar-success pink large-progress" style="width:5%">5%</div>
+                                                </div>
+                                                <span id="found" class="label label-info" style="display: none;"></span>
+                                                <input name="search" type="text" id="st_search" class="st_search" placeholder="Search Here">
+                                                <select size="1" name="per_page" class="st_per_page "><option value="10">10</option>
+                                                    <option value="25">25</option><option value="50">50</option></select>-->
+                                                <table id="stream_table" class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Site Name</th>
+                                                        <th>Site Url</th>
+                                                        <th>Visits</th>
+                                                        <th>Pageviews</th>
+                                                        <th>Created</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+														@foreach($users_site as $y => $site)
+														<tr id="row_{{{$site->idsite}}}">
+															<td>{{{$site->idsite}}}</td>
+															<td>{{$site->name}}</td>
+															<td><a href="{{$site->main_url}}">{{$site->main_url}}</a></td>
+															<td></td>
+															<td></td>
+															
+															<td>{{date("Y m d H:s:i",strtotime($site->ts_created))}}</td>
+															<td>
+															<a href="javascript:;" onclick="fill_userId('{{{$site->idsite}}}');" class="btn btn-sm btn-info " data-toggle='modal' data-target ='#myModal'><i class="fa fa-edit"></i></a>
+															<a href="javascript:;" onclick="delete_user({{{$site->idsite}}});" class="btn btn-sm btn-danger" ><i class="fa fa-trash"></i></a></td>
+														</tr>
+														@endforeach
+                                                    </tbody>
+
+                                                </table>
+												<!--<div class="st_pagination">
+													<ul class="pagination ">
+														<li><a href="#" class="first">First</a></li>
+														<li><a href="#" class="prev">← Previous</a></li>
+														<li data-page="0"><a href="#">1</a></li>
+														<li class="active" data-page="1"><a href="#" class="">2</a></li>
+														<li data-page="2"><a href="#">3</a></li>
+														<li data-page="3"><a href="#">4</a></li><li data-page="4"><a href="#">5</a></li>
+														<li><a href="#" class="next">Next →</a></li>
+														<li><a href="#" class="last">Last</a></li>
+													</ul>
+												</div>
+                                                <div id="summary">11 to 20 of 100 entries</div>-->
+                                            </div>
+
+	
+	</div>
+	
+	
+
+
+	</div>
+	</div>
+	@stop
+	@section('scripts')
+	{{HTML::script('js/jquery.smartWizard.js')}}
+	<script type="text/javascript">
+    $(document).ready(function(){
+    	// Smart Wizard 	
+  		$('#wizard').smartWizard();
+      
+      function onFinishCallback(){
+
+        $('#wizard').smartWizard('showMessage','Finish Clicked');
+        alert('Finish Clicked');
+      }     
+		});
+		function fill_userId(user_id)
+		{
+			$('#user_id').val(user_id);
+		}
+</script>
+@stop

@@ -21,3 +21,26 @@
 * Bootstrap (HTML/CSS) 
 * jQuery (JS) 
 * Social api integration
+
+#FRAMEWORKS USED For Lesbalcons ---- http://lesbalcons.com/
+* CI3 (PHP) 
+* Bootstrap (HTML/CSS) 
+* jQuery (JS) 
+
+#FRAMEWORKS USED For Ecoarttravel ---- https://www.ecoarttravel.com/en
+* Laravel 5 (PHP) 
+* HTML/CSS
+* jQuery (JS) 
+* Youtube Integration
+
+#FRAMEWORKS USED For Cartelmarketing ---- http://www.cartelmarketing.org/
+* Laravel 4.2 (PHP) 
+* HTML/CSS
+* jQuery (JS) 
+
+#FRAMEWORKS USED For Traffic Hero ---- http://members.traffic-hero.net/  for members  AND http://admin.traffic-hero.net/   For Admin part
+* Laravel 4.2 (PHP) 
+* HTML/CSS
+* jQuery (JS)
+* MongoDb 
+* Integrated with <a href="https://piwik.org/">Piwik</a> site analitics
