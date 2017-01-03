@@ -1,0 +1,14 @@
+<div class="navbar">
+    <div class="navbar-inner">
+        <div id="nav_box">
+            <div id="left_part_navbar">
+                <a class="brand" href="#" ><img class="img_logo" src="{$url}assets/images/logo.png" alt=""/></a>
+                <a class="pull-right user_link">Welcome,&nbsp;{$username}</a>
+            </div>  <div id="nav_bar_dev"></div>       
+                <div id="right_part_navbar">
+                    
+                    <div id="date_div">{$smarty.now|date_format}</div>
+                </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+#edit_main{
+ width: 90%;  
+ margin: 0 auto;
+}
+#edit_header{
+    width: 100%;
+    height: 100px;
+}
+#edit_center_block{
+    height: 430px;
+}
+#edit_footer{
+    width: 100%;
+    height: 50px;
+}
+.edit_slogan{
+    margin-left: 0px !important;
+}
+#edit_logo{
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+    color:#FFFFFF;    
+    font: normal normal 400 18px/15.99px "DejaVu Sans";
+    font-weight: bold;
+}
+#edit_menu{
+    height: 100px;
+}
+#edit_chart_box{
+   width: 80%;
+   height: 400px;
+}
+.edit_chart_container{
+    height: 400px !important;
+}
+.edit_left_toolbar{
+    height: 400px !important;
+}
+#edit_footer_menu{
+    height: 50px;
+    width: 80%
+}
+#save_edit{
+    float: right;
+}

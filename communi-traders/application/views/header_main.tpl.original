@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="description" content=" Communitraders is a binary options trading community,  you the most advanced binary options platform for free. Trade, practice and learn from the best binary options professionals at binaryoptionsthatsuck.com's trading Forum."/>
+    <meta name="keywords" content="Communitraders, binary options demo, binary options social trading, free binary options demo account, free binary options" />
+    <title>CommuniTraders - Trade, Share And Follow The PROS at BinaryOptionsthatSuck.com Social Trading Platform</title>
+  
+    <link href="{$url}assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/top_links.css" rel="stylesheet" type="text/css"/>  
+    <link href="{$url}assets/css/navbar_style.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/globalsearch.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/jquery-ui-1.10.0.custom.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/drawingStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/styles/reset.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/styles/main.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/js/chosen/chosen.css" rel="stylesheet" type="text/css"/>
+    <link href="{$url}assets/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/> 
+    <script type="text/javascript" src="{$url}assets/js/jquery.js"></script>
+    <!--<script type="text/javascript" src="{$url}assets/js/highstock.js"></script>-->
+    <script type="text/javascript" src="{$url}assets/js/jquery-ui-1.10.0.custom.js"></script>
+    {$editor|default:''}
+    <script type="text/javascript" src="{$url}assets/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="{$url}assets/js/bootstrap.js"></script>
+    <script type="text/javascript" src="{$url}assets/js/jquery.dataTables.js"></script>
+    {if $is_draw == 0}
+        <script type="text/javascript" src="{$url}assets/js/func_main.js"></script>
+    {else}
+        <link href="{$url}assets/css/editChart.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="{$url}assets/js/draw_graph.js"></script>
+    {/if}
+    <script type="text/javascript" src="{$url}assets/js/chosen/chosen.jquery.js"></script>    
+    <script type="text/javascript" src="{$url}assets/js/AnyChartStock.js?v=1.8.0r9161"></script> 
+</head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50" data-twttr-rendered="true">

@@ -1,0 +1,78 @@
+.toplinks { 
+    background: transparent;
+    color: #FFFFFF;
+    font: 11px "Arial", "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    position: absolute;
+    right: 20px;
+    text-align: right;
+    top: 0px;
+}
+.toplinks ul.isuser, .toplinks ul.nouser { 
+    clear: left;
+    display: block;
+    float: right;
+    list-style: none outside none;
+}
+.toplinks ul.isuser li { 
+    clear: left;
+    color: #A8A8A8;
+    display: inline;
+    float: right;
+    padding-right: 10px;
+    position: relative;
+}
+li { 
+    list-style: none outside none;
+}
+.toplinks ul.isuser li a { 
+    color: #FFFFFF;
+    display: block;
+    font-weight: 700;
+    padding: 3px 4px;
+}
+.notifications a.popupctrl:link, .notifications a.popupctrl:visited, .toplinks a:link, .toplinks a:visited { 
+    color: #FFFFFF;
+    text-decoration: none;
+}
+body a { 
+    color: #417394;
+    text-decoration: none;
+}
+.toplinks ul.isuser li.popupmenu, .toplinks ul.isuser .notifications, .toplinks ul.isuser .nonotifications { 
+    color: #000000;
+    position: relative;
+}
+.toplinks ul.isuser li.popupmenu, .toplinks ul.isuser .notifications, .toplinks ul.isuser .nonotifications { 
+    color: #000000;
+    position: relative;
+}
+.popupbody { 
+    background: #E1E1E1;
+    border: 1px solid #E1E1E1;
+    color: #3E3E3E;
+    display: none;
+    font: 11px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    left: 0px;
+    min-width: 200px;
+    padding: 2px;
+    position: absolute;
+    top: 1.5em;
+    z-index: 1000;
+}
+.toplinks ul.isuser li.welcomelink { 
+    clear: left;
+    color: #FFFFFF;
+    display: block;
+    float: right;
+    padding: 3px 4px;
+}
+.toplinks ul.isuser li.welcomelink a { 
+    clear: none;
+    display: inline;
+    float: none;
+    margin-left: 0px;
+}
+.toplinks .nonotifications a.popupctrl { 
+background: url("../images/misc/arrow.png") 100% 50% no-repeat transparent;
+padding: 3px 15px 3px 4px;
+}

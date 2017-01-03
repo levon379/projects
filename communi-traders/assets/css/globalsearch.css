@@ -1,0 +1,107 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td { 
+    margin: 0px;
+    padding: 0px;
+}
+.globalsearch { 
+    clear: left;
+    display: block;
+    float: right;
+    line-height: 1em;
+    position: absolute;
+    right: 20px;
+    text-align: right;
+    top: 0px;
+    width: 180px;
+}
+.navbar_search { 
+    display: block;
+    position: relative;
+    right: -20px;
+}
+.navbar_search input { 
+    border: 1px solid #6B91AB;
+    font-size: 11px;
+    padding: 1px;
+    vertical-align: middle;
+}
+.globalsearch input, textarea, button, select { 
+    font-family: "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+}
+.globalsearch .textboxcontainer { 
+    border-left: 1px solid #5A7F97;
+    display: inline-block;
+    float: left;
+    height: 26px;
+    text-align: center;
+}
+.globalsearch .textboxcontainer span { 
+    border-left: 1px solid #CEDFEB;
+    border-top: 1px solid #CEDFEB;
+    display: inline-block;
+    height: 22px;
+    margin-bottom: 1px;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 3px;
+    width: 147px;
+}
+.globalsearch input.textbox { 
+    width: 120px;
+}
+.navbar_search input { 
+    border: 1px solid #6B91AB;
+    font-size: 11px;
+    padding: 1px;
+    vertical-align: middle;
+}
+/*.globalsearch .textbox, textarea, select { 
+    background: #FFFFFF;
+    border: 1px solid #6B91AB;
+    border-radius: 3px;
+    color: #000000;
+    font: 11px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    outline: 0px none currentColor;
+    padding: 4px;
+}*/
+.globalsearch .buttoncontainer { 
+    border-left: 1px solid #5A7F97;
+    border-right: 1px solid #5A7F97;
+    display: inline-block;
+    float: right;
+    height: 26px;
+    overflow: hidden;
+    width: 25px;
+}
+.globalsearch .buttoncontainer span { 
+    border-left: 1px solid #CEDFEB;
+    border-top: 1px solid #CEDFEB;
+    display: inline-block;
+    height: 23px;
+    padding-left: 4px;
+    padding-top: 2.5px;
+}
+.globalsearch .searchbutton { 
+    border: 0px none currentColor;
+    margin-left: -2px;
+    margin-top: -2px;
+    padding: 0px;
+    width: 22px;
+}
+.navbar_search input { 
+    border: 1px solid #6B91AB;
+    font-size: 11px;
+    padding: 1px;
+    vertical-align: middle;
+}
+.navbar_advanced_search li { 
+    clear: both;
+    display: block;
+    height: 26px;
+}
+.navbar_advanced_search li a { 
+    color: #FFFFFF;
+}
+.globalsearch .navtabs li.selected li a, .globalsearch .navbar_advanced_search li a { 
+    font: 11px/26px "Arial", "Calibri", "Verdana", "Geneva", sans-serif;
+    text-decoration: none;
+}

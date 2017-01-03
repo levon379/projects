@@ -1,0 +1,237 @@
+<div class="tool_instrument">
+                    <div id="tool_menu">
+                        <ul class="nav nav-pills">
+                            <li id="tool" class="active">
+                                <a href="#" onclick="changeBoxes(1); return false;"> CoomuniTrader</a>
+                            </li>
+                            <li>
+                                <a href="{$url}myperformance">My Performance</a>
+                            </li>
+                            <li id="howtoplay">
+                                <a href="#" onclick="changeBoxes(0); return false;"> How To Trade</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="second_box" >
+                        <div id="howtotrade">
+                            <div id="trade_description">
+                                <h2>Welcome to the Bots’s Live BO Tool!</h2>
+                                Our team is glad to introduce a brand new tool for binary options fans to share and improve their trading skills.
+                                You are invited to add as much information and annotations to the trading analysis that you post on the forum. We encourage you to give the best explanation for the way you decided to trade.
+
+                                <h3>Sharing And Trading</h3>
+                                Each trade you do on with the Live BO Tool can be shared with the rest of the forum members with the “Share” button. If you prefer not  to share and just trade for fun you can use the “GO!” button which will just save your  trade into your trading <a href="{$url}myperformance"><b>Profile</b></a>. At your profile you will be able to see your performance report, open and closed trades as well.
+
+                                <h3>Your Balance</h3>
+                                Your account is provided with an initial amount of $20,000.
+                                Maximum investment is $2,000 and the minimum is $10, Increments are $10.
+
+                                <h3>How it works? </h3>
+                                Choose The Asset you want--> Choose Your Strategy--> Choose an expiry--> set <p>the Investment--> Enter your prices if it’s (boundary or touch options), On the Graph you are able to add Text and Annonations, Give your analysis a title and describe why it’s a great trade!?
+                                    Press on the “share” and your analysis is online! Or just press “GO!”  To see how your trade did after expiry.
+                                    <i>
+                                        <br/>
+                                        <br/>We are inviting you to share your stock analysis , Ideas and market outlook with the Bots.com Community!</i>
+                                    <br/>
+                                    <br/><i>Enjoy!</i><br/>
+                                    <i>BinaryOptionsThatSuck.com Team</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="open_trades">
+                        {if $currentTrades|count > 0}
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr class="table_header">
+                                        <th>{$user_name}</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Asset</th>
+                                        <th>Strategy</th>
+                                        <th>Investment</th>
+                                        <th>Price</th>
+                                        <th>Expiry</th>
+                                        <th>In/Out Of the money</th>
+                                        <th>Time left for expire</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {section name=i loop=$currentTrades}
+                                        <tr class="history_trade" id="active_games_{$currentTrades[i].id}">
+                                            <td>{$currentTrades[i].created_at|date_format:"%m.%d.%Y"}</td>
+                                            <td>{$currentTrades[i].asset}</td>
+                                            <td>{$currentTrades[i].strategy}</td>
+                                            <td>$&nbsp;{$currentTrades[i].investment}</td>
+                                            <td>$&nbsp;{$currentTrades[i].price}</td>
+                                            <td>{$currentTrades[i].expiry_name}</td>
+                                            <td>{$currentTrades[i].status}</td>
+                                            <td>{$currentTrades[i].time_remains}</td>
+                                        </tr>
+                                    {/section} 
+                                </tbody>
+                            </table>
+                        {/if}
+                    </div>
+                    <div id="first_box">
+                        <div id="chart_panel">
+                            <div id="draw_data"></div>
+                            <ul class="chart_buttons">
+                                <li><a href="#" id="arrow" class="button toolButton" onclick="navBarAction(this.id);return false;">      
+                                        <img src="{$url}assets/images/buttons/arrow.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="line" class="button toolButton" onclick="selectedTool(this.id);return false;">      
+                                        <img src="{$url}assets/images/buttons/h_line.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="remove" class="button toolButton" onclick="selectedTool(this.id);return false;">      
+                                        <img src="{$url}assets/images/buttons/crosser.png" alt=""/>
+                                    </a>
+                                </li>                               
+                                <li><a href="#" id="text" class="button toolButton" onclick="selectedTool(this.id);return false;">      
+                                        <img src="{$url}assets/images/buttons/add_text.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="move_text" class="button toolButton" onclick="navBarAction(this.id);return false;">      
+                                        <img src="{$url}assets/images/buttons/move_text.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="add_arrow_up" class="button toolButton" onclick="addImage();return false;">      
+                                        <img src="{$url}assets/images/buttons/add_arrow_up.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="add_arrow_down" class="button toolButton" onclick="navBarAction(this.id);return false;">      
+                                        <img src="{$url}assets/images/buttons/add_arrow_down.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="candle_chart" class="button toolButton" onclick="navBarAction(this.id);return false;">      
+                                        <img src="{$url}assets/images/buttons/candel_chart.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="line_chart" class="button toolButton">      
+                                        <img src="{$url}assets/images/buttons/line_chart.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="full_screen" class="button toolButton">      
+                                        <img src="{$url}assets/images/buttons/full_screen.png" alt=""/>
+                                    </a>
+                                </li>
+                                <li><a href="#" id="exit_full_screen" class="button toolButton">      
+                                        <img src="{$url}assets/images/buttons/exit_full_screen.png" alt=""/>
+                                </li>                             
+                            </ul>
+                        </div>                      
+                        <div id="container">
+
+                        </div>
+                        <div id="select_status"></div>
+                        <div id="user_balance">Balance:&nbsp;$&nbsp;{$userCache}
+                            <input id="userCache" type="hidden" value="{$userCache}">
+                        </div>
+                        <br/>
+                        <div id="dashboard">
+                            <div id="dashboard_container">
+                                <select id="what" onChange="runWithoutGame()" class="chzn-select">
+                                    <option selected="selected" value="">Choose Asset--></option>
+                                    <optgroup label="COMMODITIES">
+                                        {section name=m loop=$symbols_metall} 
+                                            <option value="{$symbols_metall[m].short_name}">{$symbols_metall[m].full_name}</option>
+                                        {/section} 
+                                    </optgroup>
+                                    <optgroup label="CURRENCY PAIRS">
+                                        {section name=c loop=$symbols_currency} 
+                                            <option value="{$symbols_currency[c].short_name}">{$symbols_currency[c].full_name}</option>
+                                        {/section} 
+                                    </optgroup>
+                                    <optgroup label="STOCK">
+                                        {section name=co loop=$symbols_company} 
+                                            <option value="{$symbols_company[co].short_name}">{$symbols_company[co].full_name}</option>
+                                        {/section} 
+                                    </optgroup>
+                                    <optgroup label="INDICES">
+                                        {section name=i loop=$symbols_indices} 
+                                            <option value="{$symbols_indices[i].short_name}">{$symbols_indices[i].full_name}</option>
+                                        {/section} 
+                                    </optgroup>
+                                </select>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <select id="expire" class="select_small chzn-select">
+                                    <option selected value="">Expiry--></option>
+                                    {section name=ex loop=$expiry} 
+                                        <option value="{$expiry[ex].expiry_value}">{$expiry[ex].expiry_name}</option>
+                                    {/section} 
+                                </select>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <div id="strategy_select" onmouseout="hidePromt();">
+                                    <div id="strategy_val">
+                                        <input id="strategy" type="hidden" value="">
+                                    </div>
+                                    <ul class="nav" id="strategy_ul" role="navigation" onmouseout="hidePromt();">
+                                        <li class="dropdown">
+                                            <a id="drop1" href="#" role="button" class="dropdown-toggle" onmouseout="hidePromt();" data-toggle="dropdown">
+                                                Choose Srategy--> 
+
+                                            </a>
+                                            <span id="caret_box" class="caret"></span>
+                                            <ul class="dropdown-menu" id="dropdown_items" role="menu" aria-labelledby="drop1">
+                                                {section name=s loop=$strategy} 
+                                                    <li onmouseover="showPromt('{$strategy[s].short_name}');">
+                                                        <a href="#" id="{$strategy[s].short_name}" onclick="setStrategyInput('{$strategy[s].short_name}','{$strategy[s].full_name}'); return false;">{$strategy[s].full_name}</a>
+                                                    </li>
+                                                {/section} 
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <select id="investment" class="chzn-select">
+                                    <option selected value="">Set Investment--></option>
+                                    {section name=inv loop=$investment}
+                                        {if $investment[inv].value == 100}
+                                            <option selected value="{$investment[inv].value}">${$investment[inv].value}</option>
+                                        {else}
+                                            <option value="{$investment[inv].value}">${$investment[inv].value}</option>
+                                        {/if}                                  
+                                    {/section} 
+                                </select>
+                                <div id="price_input">
+                                    <input id="price" type="text" value="Input price" onClick="appear_disapeare(this.id);">
+                                </div>       
+                                <div id="trade_value">
+                                    <input id="game_id" name="game_id" type="hidden" value="0">
+                                </div>
+                                <input id="isstart" type="hidden" value="0">                          
+                                <input id="is_post" type="hidden" value="0">
+                                <input id="is_full_screen" type="hidden" value="0">
+                                <input id="current_price" type="hidden" value="0">
+                                <input id="already_selected" type="hidden" value="0">
+                                <input id="main_page_tool" type="hidden" value="1">
+                                <div id="button_container">
+                                    <button id="share" class="btn btn-success share_button btn-small action_button" onclick="run(1); return false;" alt="Trade & Share with the Community">Share</button>
+                                    <br/>
+                                    <button id="go" class="btn btn-small go_button action_button upper_btn" onclick="run(0); return false;" alt="Let me just trade">Go</button>
+                                </div>
+                            </div>
+                        </div>                
+                        <div id="trade_battons_box">
+                            <span><h5>Disclosure:</h5></span>
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                I Don't have an open trade on my account.
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                I Do have an open trade on my account.
+                            </label>
+                        </div>
+                        <div id="strategy_promt" class="alert-info">
+                        </div>
+                    </div>
+                </div>

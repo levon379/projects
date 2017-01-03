@@ -1,3 +1,9 @@
+#FRAMEWORKS USED For CommuniTraders-Social-Trading-Platform ---- http://forums.binaryoptionsthatsuck.com/forums/2157-CommuniTraders-Social-Trading-Platform
+* Codeigniter (PHP)
+* Bootstrap (HTML/CSS) 
+* jQuery (JS)
+* vBulletin 5 CMS for forum
+
 #FRAMEWORKS USED For Everfox ---- http://everfox.com/
 * Yii2 (PHP)
 * Bootstrap (HTML/CSS) 

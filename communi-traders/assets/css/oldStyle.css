@@ -1,0 +1,668 @@
+body{
+    background: #E9E9E9;
+    font-family: "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+}
+.header_container{
+    height: 108px;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #2F4456;
+    background-image: url("../images/gradients/gradient-grey-down.png");
+    background-origin: padding-box;
+    background-position: 0% 0%;
+    background-repeat: repeat-x;
+    background-size: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+}
+.body_wrapper {
+    margin-top: 10px;
+    background: #FFFFFF;
+    padding: 10px 10px 10px 10px;
+    font: normal normal 400 13px/15.99px "DejaVu Sans";
+    min-height: 658px;
+}
+.footer_container{
+    margin-top: 20px;
+    background: #FFFFFF;
+    margin: 10px 0px 20px 0px;
+    font: normal normal 400 13px/15.99px "DejaVu Sans";
+    min-height: 70px;
+}
+.body_wrapper,.footer_container{
+    border-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+.breadcrumb{
+    margin: 0px;
+    padding: 0px;
+    height: 22px;
+    background: #FFFFFF;
+}
+.frm_board{
+    margin: 10px 0px 0px 380px;
+}
+.container{
+    width: 100%;
+    height: 50%;
+}
+.floatcontainer{
+    display: block;
+    margin: 0px auto;
+    padding: 0px;
+    height: 22px;
+}
+.breadcrumb .navbithome {
+    float: left;
+    padding-bottom: 3.5px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 3.5px;
+}
+.breadcrumb .navbit {
+    background-image: url("../images/misc/navbit-arrow-right.png");
+    padding-top: 4.5px;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    float: left;
+    padding-left: 3px;
+    padding-right: 10px;
+}
+.breadcrumb .navbit.lastnavbit {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    background-size: auto;
+}
+/*Start Header block*/
+/*.doc_header {
+    color: #A8A8A8;
+    font: 11px "Arial", "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    height: 45px;
+    position: relative;
+}*/
+/*.navbar{
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #2F4456;
+    background-image: none;
+    background-origin: padding-box;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    background-size: auto;
+    border-bottom-color: #FFFFFF;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    border-left-color: #FFFFFF;
+    border-left-style: solid;
+    border-left-width: 0px;
+    border-right-color: #FFFFFF;
+    border-right-style: solid;
+    border-right-width: 0px;
+    border-top-color: #FFFFFF;
+    border-top-style: solid;
+    border-top-width: 0px;
+    color: #FFFFFF;
+    font-family: "Arial", "Calibri", "Verdana", "Geneva", sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    height: 53px;
+    line-height: normal;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 10px;
+    position: relative;
+}*/
+/*End Header block*/
+/*Start Tool's container blog' block*/
+#container{
+    height: 30% !important;
+    width: 100%;
+    /*    float: left;*/
+}
+#dashboard{
+    width: 100%;
+    height:51px;
+    background: url('../images/trading_tool_bar/menu_bg.jpg') repeat-x;
+}
+#trade_battons_box{
+    height: 80px;
+    color:#000000;
+    width: 360px;
+    margin-left: 5px;
+    float: left;
+}
+#dashboard_container{
+    float: left;
+    height: 40px;
+    padding-top: 14px;
+    position: relative;
+    width: 81%;
+    z-index: 1;
+}
+#dashboard select{
+    width: 130px;
+    float:left;
+    margin-left: 5px;
+}
+.go_button{
+    background: #337dfc;
+}
+.share_button{
+    background: #81ea16;
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+.share_button:hover{
+    background: #81ea16;
+    color: #FFFFFF;
+}
+.go_button:hover{
+    background: #337dfc;
+    color: #FFFFFF;
+}
+.share_button, .go_button{
+    width: 90%;
+    max-width:140px;
+    height: 22px;
+    color: #FFFFFF;
+}
+.blockrow_posticons{
+    width:12%;
+}
+.select_small{
+    width: 100px !important;
+    float:left;
+    margin-left: 5px;
+}
+#price_input{
+    width: 13%;
+    float: left;
+    margin-left: 4px;
+    height: 22px;
+    border-radius: 4px;
+    color: #444444;
+    font: 11px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+}
+#price_input input{
+    width: 100%;
+    float: left;
+    margin-left: 4px;
+    height: 22px;
+    border-radius: 4px;
+    color: #444444;
+    font: 11px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+}
+#button_container{
+    float:right;
+    height: 40px;
+    margin-left: 81%;
+    margin-top: -52px;
+    width: 20%;
+    max-width: 150px;
+}
+#button_container .btn {
+    font: 700 14px/20px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    font-weight: bold;
+    padding: 1px 5px !important;
+}
+.two_price_input{
+    float: left !important;
+    height: 48px !important;
+    margin-top: -28px !important;
+    width: 100px !important;
+}
+.two_price_input input{
+    height: 20px !important;
+}
+.two_price_input input:first-child{
+    margin-bottom: 3px !important;
+}
+/*End Tool's container blog' block*/
+/*Start STATUS SELECT block*/
+#select_status{
+    margin: 5px 0px 0px 28px;
+    width: 450px;
+}
+/*End STATUS SELECT block*/
+/*Start STATUS SELECT block*/
+#game_comment{
+    margin-top: 15px;
+    width:100%;
+}
+/*End STATUS SELECT block*/
+#comment_field{
+    width : 100%;
+    min-height: 100px;
+}
+#game_comment_kw,#comment_kw{
+    width: 500px;
+    float: left;
+}
+#game_comment_visible{
+    margin: 10px 0px 10px 0px;
+}
+#visible{
+    width:85px;
+}
+#errors{
+    height: 50px;
+    width: 400px;
+}
+#chart_box{
+    width: 80%;
+    float: left;
+}
+#draw_box{
+    width: 40%;
+}
+#current_price_open{
+    width: 80%;
+}
+#tool_container{
+    border: 2px #7d8c97 solid;
+    border-radius: 5px;
+    height: 100%;
+}
+#toll_container_header{
+    background: #83a0b2;
+    border-bottom: 1px solid #7d8c97;
+    height: 25px;
+    color: #FFFFFF;
+    font-family: "Arial", "Calibri", "Verdana", "Geneva", sans-serif;
+    font-size: 17spx;
+}
+#toll_container_header div{
+    padding-left: 10px;
+    padding-top: 4px;
+    text-decoration: none;
+}
+.table_header th{
+    /*    background: url("../images/table_header.png") repeat-x;*/
+    background-color: #234F83;
+    color:#FFFFFF;
+    border: none;
+}
+.table_header_leader th{
+    background-color: #234f83;
+    color:#FFFFFF;
+    border: none;
+    background: url("../images/table_header.png") repeat-x;
+    /*    height: 75px;*/
+}
+.table_header_second{
+    background-color: #234f83;
+    color:#FFFFFF;
+    border: none !important;
+}
+.table_navigation th{
+    height: 30px;
+}
+.table_navigation select{
+    width: 130px;
+}
+.table_navigation_first, .table_navigation_last{
+    width: 70px !important;
+}
+/*Start Report block */
+#about{
+    width:38%;
+    float:left;
+}
+.report_font{
+    font-family: "Arial", "Calibri", "Verdana", "Geneva", sans-serif;
+    font-size: 10px;
+}
+.td_name td{
+    width:150px;
+}
+#performance_table{
+    float: left;
+    width: 38%;
+}
+#performance_table td{
+    width:80px;
+    height: 40px;
+}
+#reports_left_part{
+    width: 100%;
+    height: 40%;
+    min-height: 380px;
+}
+.first_colum{
+    
+}
+#reports_right_part{
+    width: 100%;
+    height: 60%;
+}
+#closed_trades,#open_trades,#open_trades_per{
+    width: 60%;
+    margin-left: 40%;
+}
+.main_open_games{
+    width: 100%;
+}
+#export_to_xls{
+    width: 50px;
+    float: right;
+}
+.table_container{
+    height: 100%;
+}
+/*End Report block*/
+/*Start How to trade block */
+#howtotrade{
+    min-height: 500px;
+    background: #FFFFFF;
+    padding: 10px;
+    border-radius: 5px;
+}
+#trade_description{
+    padding: 14px;
+}
+/*End How to trade block*/
+/*Start Blockrow block*/
+#blockrow{
+    display: block;
+    min-height: 60px;
+    padding-bottom: 5px;
+}
+.formcontrols .blockrow label .full {
+    float: none;
+    width: auto;
+}
+#tool_menu{
+    height: 20%;
+    width: 100%;
+}
+#tab_menu{
+    height:30px;
+    position:relative;
+}
+.a_text{
+    padding: 5px 0px 0px 5px;
+}
+#tool_box{
+    height: 70%;
+    width: 75%;
+    float: left;
+}
+#app_box{
+    margin-left: 75%;
+    width: 25%;
+}
+.primary_full_textbox{
+    max-width: 100%;
+    width: 596px;
+    height: 25px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    color: #000000;
+    font: 11px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    outline: 0px none currentColor;
+    padding: 4px;
+    background: #FFFFFF;
+    border: 1px solid #6B91AB;
+}
+.primary_full_textbox:focus{
+    background: #FFFFFF;
+    border: 1px
+}
+.textbox, textarea, select {
+    background: #F2F6F8;
+    border: 1px solid #6B91AB;
+    border-radius: 3px;
+    color: #000000;
+    font: 11px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    outline: 0px none currentColor;
+    padding: 4px;
+}
+/*End Blockrow block*/
+/*Start tool innerbox blcok*/
+#message_container{
+    height: 100px;
+    width:60%;
+    position: relative;
+    z-index: 0;
+}
+#message_box{
+    margin-left: 0px;
+    float: left;
+    width: 100%;
+}
+/*End tool innerbox blcok*/
+.screen_button{
+    margin: 0px 5px 10px 5px;
+}
+.history_trade td{
+    width: 300px;
+}
+#expire{
+    float: left;
+}
+#caret_box{
+    margin-top:-8px;
+    margin-left: 116px;
+}
+#strategy_select{
+    background-color: #EEEEEE;
+    background-image: linear-gradient(to bottom, #EEEEEE 20%, #FFFFFF 80%);
+    height: 24px;
+    margin-left: 245px;
+    width: 130px;
+    margin: 1px 0px 50px 5px;
+    border-radius: 4px;
+    float: left;
+}
+#strategy_ul{
+    padding: 5px 0px 0px 3px;
+    height: 200px;
+    position: relative;
+    z-index: 3;
+}
+#strategy_select a{
+    color: #444444;
+    text-align: left;
+    vertical-align: middle;
+    font: 11px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+}
+#strategy_promt{
+    padding: 3px;
+    margin: 5px;
+    border-radius: 5px;
+    font: 13px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+}
+#investment{
+    margin-left: 140px !important;
+}
+.in_money{
+    background: #C6EFCE;
+}
+#chartdiv{
+    top: 0px;
+    width:100%;
+    height:400px;
+}
+.icon_lable{
+    width:100px !important;
+}
+#myCalendar,#myLeaderBoard,#myModal{
+    width: 1000px;
+}
+.modal-body {
+    max-height: 500px;
+}
+#slogan{
+    width: 38%;
+    float: left;
+    margin-left: 0px;
+    height: 30px;
+    background: url("../images/trading_tool_bar/top_tab_bg.jpg") repeat-x;
+}
+#slogan_box{
+    margin-left: 50px;
+    padding-top: 5px;
+    color: #FFFFFF;
+    vertical-align: middle;
+    font-weight: bold;
+    font: 16px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    height: 30px;
+}
+.menu_tab{
+    float: left;
+    height: 100%;
+    width: 19%;
+    max-width: 141px;
+}
+.menu_tab_border{
+    border-left: 1px solid #667b8c;
+}
+.menu_a{
+    background: url("../images/trading_tool_bar/top_tab_bg.jpg") repeat-x;
+    float: left;
+    height: 30px;
+    width: 85%;
+}
+.menu_tab a{
+    vertical-align: middle;
+    font-weight: bold;
+    color: #FFFFFF;
+    font: 12px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    text-decoration: none;
+}
+.corner{
+    background: url("../images/tab_corner.png") repeat-x;
+    height: 30px;
+    height: 30px;
+    margin-left: 85%;
+    width: 16%;
+    max-width:22px;
+}
+.menu_link{
+    padding-top: 3px;
+}
+.author_p a{
+    color: #0000C0;
+    font: normal normal 700 16px/18px Arial;  
+}
+.news_box,news_title,.news_date,.news_content{
+    width: 100%;
+}
+.news_title, .news_date{
+    font-weight: bold;
+}
+.news_box{
+    color: #006dcc;
+    padding-bottom: 15px;
+}
+.calendar_header{
+    background: #2c4261;
+    color:#FFFFFF;
+}
+.close_white{
+    color:#FFFFFF !important;
+}
+#lower_box{
+    width: 100%;
+}
+#post_box{
+    width:80%;
+    float: left;
+}
+#info_box{
+    margin-left: 80%;
+    width: 20%;
+}
+#tab_box{
+    width:62%;
+    position: relative;
+    margin-left: 38%;
+}
+.info_box{
+    color: #FFFFFF; 
+    font-weight: bold;
+    width: 60%;
+    margin-left: 40%;
+}
+.info_box div{
+    width:30%;
+    float: left;
+    padding-top: 1%;
+}
+#investment_chzn{
+    width:13% !important;
+}
+#lower_button{
+    background: #83A0B2;
+    width: 100%;
+}
+.lower_share{
+    margin-left: 45%;
+    margin-top: 4px;
+    padding: 1px 0px 0px;
+}
+#buble{
+    min-height: 713px;
+}
+.chzn-drop{
+    width:99% !important;
+}
+.comment_field_tbl{
+    width:100% !important;
+}
+.open_games th{
+    font: 10px "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+    font-weight: bold;
+    background: #83A0B2;
+    color: #FFFFFF;
+}
+#open_trades{
+    padding:0px !important;
+}
+#first_colum{
+    background: #A0FFA8;
+}
+#second_colum{
+    background: #D8F5FF;
+}
+#third_colum{
+    background: #A0FFA8; 
+}
+#fourth_colum{
+    background: #D8F5FF; 
+}
+#fifth_colum{
+    background: #FFFFFF;
+}
+.accordion-group{
+    margin-bottom: 10px;   
+}
+.accordion-heading{
+    background-color: #2F4456;
+    background-image: url("../images/right_bcg.jpg");
+}
+.accordion-heading a{
+    color: #FFFFFF;
+    text-decoration: none;    
+}

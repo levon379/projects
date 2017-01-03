@@ -1,0 +1,27 @@
+/*#chart_panel{
+   min-height: 30px;
+   width: 100%;
+   background: url("../images/trading_tool_bar/top_bottom_bg.jpg") repeat-x;
+}
+.chart_buttons{
+    padding-top: 1px;
+    padding-left: 4px;
+}
+.chart_buttons li{
+    display: block;
+    display: inline;
+}
+.chart_buttons a{
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    float: left;
+    margin-left: 5px;
+}
+.pressedButton 
+{   
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 1px lime;
+    background-color:#417394;
+}*/

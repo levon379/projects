@@ -1,0 +1,17 @@
+{counter start=0}
+{section name=i loop=$leaders}
+    <div class="lb_table">
+    <ul class="lb">
+    <li class="lb_counter"><span>{counter}</span></li>
+    <li class="lb_name"><a href="{$url}profile/{$leaders[i].username}/{$leaders[i].user_id}">{$leaders[i].username}</a></li>
+    <li class="lb_arrow {if $leaders[i].profit_loss_rate > 100}green_arrow{else}red_arrow{/if} "></li>
+    <li class="lb_avatar"><img src="{$leaders[i].img}"></li>
+    <li class="lb_tottrades">{$leaders[i].total_trades}(w+b)</li>
+    <li class="lb_trades">{$leaders[i].w_trades}</li>
+    <li class="lb_rates">{$leaders[i].w_rates}%</li>
+    <li class="lb_pl">{$leaders[i].profit_loss_rate}</li>
+    <li class="lb_follow"><a href="{$url}profile/{$leaders[i].username}/{$leaders[i].user_id}">{$leaders[i].username}</a></li>
+    </ul>
+
+    </div>
+{/section}

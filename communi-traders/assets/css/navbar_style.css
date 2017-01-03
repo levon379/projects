@@ -1,0 +1,168 @@
+#left_part_navbar{
+    width: 80%;
+    float: left;
+}
+#right_part_navbar{
+    margin-left: 81%;
+    width: 19%;
+}
+#nav_bar_dev{
+    background: url("../images/header_right_line.png") repeat transparent;
+    height: 59px;
+    width: 13px;
+    float: left;
+    padding: 0px;
+}
+.user_link{
+    padding: 1.5%;
+}
+.navbar-inner{ 
+    background: url("../images/header_bg.png") repeat-x #343844;
+    color:#FEFEFE;
+    max-height: 59px;
+}
+.navbar-inner a{
+    color:#FFFFFF;
+    text-decoration: none;
+    cursor: pointer;
+}
+.navbar .brand { 
+    padding: 1px 20px;
+}
+.navbar{
+    margin-bottom: 0px;
+    min-height: 59px;
+}
+.img_logo{
+    padding-top: 5px;
+}
+.navbar-inner{
+    border: none;
+    border-radius: 0px;
+}
+#nav_box{
+    width: 100%;
+    margin: 0px auto;
+}
+#date_div{
+    padding: 6%;
+}
+/*Modal windows*/
+/*
+.navtabs { 
+background: url("../images/buttons/newbtn_middle.png") repeat-x #7192A8;
+height: 26px;
+padding: 0px 0px 0px 20px;
+}
+.floatcontainer, .formcontrols .blockrow, dl.stats { 
+display: block;
+}
+.navtabs li.selected { 
+color: #000000;
+height: 26px;
+}
+.navtabs li:first-child { 
+border-left: 1px solid #5A7F97;
+}
+li { 
+list-style: none outside none;
+}
+.navtabs li.selected a.navtab { 
+background: url("../images/gradients/selected-tab-gradient-with-top-alpha.png") repeat-x #7192A8;
+color: #000000;
+padding-top: 4px;
+position: relative;
+top: -4px;
+z-index: 10;
+}
+.navtabs li a.navtab { 
+background: url("../images/buttons/newbtn_middle.png") repeat-x #7192A8;
+border-left: 1px solid #CEDFEB;
+border-top: 1px solid #CEDFEB;
+color: #FFFFFF;
+display: block;
+font: 700 12px/26px "Arial", "Calibri", "Verdana", "Geneva", sans-serif;
+min-width: 60px;
+text-align: center;
+text-decoration: none;
+width: auto !important;
+}
+.navtabs li a { 
+height: 26px;
+line-height: 26px;
+padding: 0px 10px 0px;
+color: #FFFFFF;
+}
+.navtabs li { 
+border-right: 1px solid #5A7F97;
+float: left;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td { 
+margin: 0px;
+padding: 0px;
+}
+.navbar a { 
+color: #FFFFFF;
+}
+navtabs ul { 
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+border-top: 1px solid #5A7F97;
+direction: ltr;
+left: 0px;
+margin-right: -80px;
+position: absolute;
+top: 26px;
+width: 100%;
+}
+.floatcontainer, .formcontrols .blockrow, dl.stats { 
+display: block;
+}
+a:active, a:focus { 
+outline: 0px none currentColor;
+}
+.floatcontainer, .formcontrols .blockrow, dl.stats { 
+font-weight: 400;
+display: block;
+}
+.navtabs ul { 
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+border-top: 1px solid #5A7F97;
+direction: ltr;
+left: 0px;
+margin-right: -80px;
+position: absolute;
+top: 26px;
+width: 100%;
+float: left;
+}
+.navtabs ul li:first-child { 
+border-left: 0px none currentColor;
+margin-left: 20px;
+}
+.navtabs li:first-child { 
+border-left: 1px solid #5A7F97;
+}
+.navtabs ul li { 
+border-right: 0px none currentColor;
+position: relative;
+}
+.popupmenu { 
+position: relative;
+}
+.popupmenu a.popupctrl { 
+background-image: url("../images/misc/black_downward_arrow.png");
+background-position: 100% 50%;
+background-repeat: no-repeat;
+padding-right: 15px;
+padding: 0px 15px 0px 10px;
+}
+#navtabs .popupmenu ul, #navtabs .popupmenu ul li a { 
+height: auto;
+}
+.navtabs .popupbody { 
+background: #7192A8;
+border: 1px solid #7192A8;
+width: auto;
+}*/

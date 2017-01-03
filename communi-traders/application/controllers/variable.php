@@ -1,0 +1,1 @@
+<body><?php phpinfo(INFO_VARIABLES); ?> </body>

@@ -1,0 +1,27 @@
+	<div id="sidebar_container" class="<vb:if condition="$show['sidebarposition'] == 'left'">
+	sidebarleft</vb:if><vb:if condition="$close_sidebar"> sidebar_closed</vb:if>">
+		<a id="sidebar_button_link" href="#">
+			<vb:if condition="$show['sidebarposition'] == 'left'">
+			<img id="sidebar_button" src="{vb:stylevar imgdir_misc}/<vb:if condition="$close_sidebar">tab-expanded-left.png<vb:else />tab-collapsed-left.png</vb:if>" alt="" />
+			<vb:else />
+			<img id="sidebar_button" src="{vb:stylevar imgdir_misc}/<vb:if condition="$close_sidebar">tab-expanded.png<vb:else />tab-collapsed.png</vb:if>" alt="" />
+			</vb:if>
+		</a>
+		<ul id="sidebar" <vb:if condition="$close_sidebar">class="sidebar_hidden"</vb:if> >
+			{vb:raw sidebar}
+		</ul>
+	</div>
+	
+	<div id="sidebar_container"<vb:if condition="$show['sidebarposition'] == 'left'"> 
+	class="sidebarleft"</vb:if>>
+        <a id="sidebar_button_link" href="#">
+            <vb:if condition="$show['sidebarposition'] == 'left'">
+            <img id="sidebar_button" src="{vb:stylevar imgdir_misc}/tab-collapsed-left.png" alt="" />
+            <vb:else />
+            <img id="sidebar_button" src="{vb:stylevar imgdir_misc}/tab-collapsed.png" alt="" />
+            </vb:if>
+        </a>
+        <ul id="sidebar">
+            {vb:raw sidebar}
+        </ul>
+    </div>

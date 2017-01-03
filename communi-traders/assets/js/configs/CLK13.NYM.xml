@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stock xmlns="http://anychart.com/products/stock/schemas/1.0.0/schema.xsd">
+    <data>
+        <data_sets>
+            <data_set id="dataSetCrude OIL" source_url="http://forums.binaryoptionsthatsuck.com/CommuniTraders/ajax/get_preload/CLK13.NYM">
+                <csv_settings ignore_first_row="true" rows_separator="\n" columns_separator=","/>
+                <locale>
+                    <date_time>
+                        <format><![CDATA[%u]]></format>
+                    </date_time>
+                </locale>
+            </data_set>
+        </data_sets>
+        <data_providers>
+            <general_data_providers>
+                <data_provider data_set="dataSetCrude OIL" id="dpCrude OIL">
+                    <fields>
+                        <field type="Value" column="4" />
+                    </fields>
+                </data_provider>
+            </general_data_providers>
+            <scroller_data_providers>
+                <data_provider id="scrDp" data_set="dataSetCrude OIL" column="4"/>
+            </scroller_data_providers>
+        </data_providers>
+    </data>
+
+    <settings>
+        <inside_margin right="90"/>
+        <charts>
+            <chart>
+                <series_list>
+                      <series type="Line" data_provider="dpCrude OIL" color="#3463B0" id="idSeriesA">
+                        <name><![CDATA[Crude OIL]]></name>
+                    </series>                   
+                </series_list>
+                <value_axes>
+                    <primary position="Right">
+                        <labels position="Outside" padding="3" valign="Center" show_first="true" show_last="true">
+                            <font family="Verdana" color="#444444" bold="true" size="9"/>
+                            <format>
+<![CDATA[{%Value}{numDecimals:4}]]>
+                            </format>
+                        </labels>
+                        <scale minimum_offset="0"/>
+                        <grid>
+                            <line dashed="true" dash_length="3" dash_space="3" pixel_hinting="true"/>
+                        </grid>
+                        <tickmarks enabled="true" show_first="true" show_last="true" thickness="1" size="3" pixel_hinting="true" color="#333333"/>
+                        <axis_markers>
+                            <line_markers>
+                                <line_marker value_mode="Bound" series_id="idSeriesA" value_token="{%Value.LastVisible}">
+                                    <line color="#920000" thickness="1"/>
+                                    <labels>
+                                        <label anchor="Right" halign="Right" valign="Center" x_padding="3">
+                                            <format>
+<![CDATA[{%Value}{numDecimals:4}]]>
+                                            </format>
+                                            <font color="#FFFFFF" size="9" family="Verdana" bold="true"/>
+                                            <background enabled="true">
+                                                <fill color="#920000"/>
+                                            </background>
+                                        </label>
+                                    </labels>
+                                </line_marker>
+                            </line_markers>
+                        </axis_markers>
+                    </primary>
+                </value_axes>
+                <x_axis>
+                    <major_grid>
+                        <line opacity="1" color="#D9D9D9"/>
+                    </major_grid>
+                    <minor_grid>
+                        <line dashed="true" dash_length="3" dash_space="3" pixel_hinting="true"/>
+                    </minor_grid>
+                </x_axis>
+            </chart>
+        </charts>
+        <time_scale>
+            <selected_range type="Custom" start_date="2000-01-02"/>
+        </time_scale>
+        <scroller data_provider="scrDp"/>
+    </settings>
+</stock>

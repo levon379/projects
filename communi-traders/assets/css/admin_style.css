@@ -1,0 +1,54 @@
+body{
+    background: #E9E9E9;
+    font-family: "Tahoma", "Calibri", "Verdana", "Geneva", sans-serif;
+}
+#input_center{
+/*    width:300px;*/
+    margin: 200px 0px 0px 450px;
+}
+.log_form,#errors{
+    margin: 20px;
+}
+#main_container{
+    width: 1279px;
+    margin: 0px auto;
+}
+#header{
+    height: 100px;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    border-radius: 5px;
+}
+#nav_part{
+    margin: 5px;
+    width: 150px;
+    float: left;
+}
+#content_part{
+    margin-left: 160px;
+    width: 1000px;
+    min-height: 400px;
+}
+#content_box{
+    margin-top: 10px;
+    border-radius: 5px;
+    background: #ffffff;
+    min-height: 500px;
+}
+.table_menu{
+    padding-top: 5px;
+}
+.table_menu{
+   height: 40px; 
+}
+.table_box{
+    padding-top: 15px;
+}
+#forum_rooms{
+    padding-top: 10px;
+    width: 1000px;
+}
+#reports{
+    padding-top: 10px;
+    width: 1000px;
+}

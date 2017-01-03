@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stock xmlns="http://anychart.com/products/stock/schemas/1.0.0/schema.xsd">
+	<data>
+		<data_sets>
+			<data_set id="dataSetCopper ETF" source_url="http://forums.binaryoptionsthatsuck.com/CommuniTraders/ajax/get_preload/CU">
+				<csv_settings ignore_first_row="true" rows_separator="\n" columns_separator=","/>
+				<locale>
+					<date_time>
+						<format><![CDATA[%u]]></format>
+					</date_time>
+				</locale>
+			</data_set>
+		</data_sets>
+		<data_providers>
+			<general_data_providers>
+				<data_provider data_set="dataSetCopper ETF" id="dpCopper ETF">
+					<fields>
+						<field type="Value" column="4" />
+					</fields>
+				</data_provider>
+			</general_data_providers>
+			<scroller_data_providers>
+				<data_provider id="scrDp" data_set="dataSetCopper ETF" column="4"/>
+			</scroller_data_providers>
+		</data_providers>
+	</data>
+
+	<settings>
+<settings>
+    <outside_margin left="50" top="50" right="50" bottom="50" />
+  </settings>
+		<charts>
+			<chart>
+                <value_axes>
+                    <primary position="Right" offset="0">
+                    </primary>
+                </value_axes>
+				<series_list>
+					<series type="Line" data_provider="dpCopper ETF" color="#3463B0">
+						<name><![CDATA[Copper ETF]]></name>
+					</series>
+				</series_list>
+			</chart>
+		</charts>
+		<time_scale>
+            <selected_range type="Custom" start_date="2000-01-02"/>
+        </time_scale>
+		<scroller data_provider="scrDp"/>
+	</settings>
+</stock>
